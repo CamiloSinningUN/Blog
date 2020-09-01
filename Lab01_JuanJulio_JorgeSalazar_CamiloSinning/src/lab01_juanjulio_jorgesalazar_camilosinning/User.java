@@ -9,13 +9,16 @@ package lab01_juanjulio_jorgesalazar_camilosinning;
  *
  * @author camil
  */
-public class Lab01_JuanJulio_JorgeSalazar_CamiloSinning {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class User {
+    int id;
+    String username;
+    String name;
+    String email;
+    //address
+    String phone;
+    String website;
+    //Company
+    //lista de comentarios
+    //Lista de post
     
 }
