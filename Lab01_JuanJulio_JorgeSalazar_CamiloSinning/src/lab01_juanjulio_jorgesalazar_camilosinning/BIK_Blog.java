@@ -16,6 +16,7 @@ public class BIK_Blog extends javax.swing.JFrame {
      */
     public BIK_Blog() {
         initComponents();
+        
     }
 
     /**
@@ -76,6 +77,7 @@ public class BIK_Blog extends javax.swing.JFrame {
                 new BIK_Blog().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
