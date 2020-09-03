@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author camil
  */
-public class ArchiveMethods {
+public class JsonMethods {
     
     //Metodo de prueba (Inicio)
     public static void ShowPost() {

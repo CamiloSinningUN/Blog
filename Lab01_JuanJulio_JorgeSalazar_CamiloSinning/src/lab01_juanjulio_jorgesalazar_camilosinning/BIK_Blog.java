@@ -18,7 +18,13 @@ public class BIK_Blog extends javax.swing.JFrame {
         initComponents();
         
     }
+      
+    //Lista de usuarios
 
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
