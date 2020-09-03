@@ -60,4 +60,9 @@ public class JsonMethods {
         }
     }
     //(Fin)
+    
+    //Calcular maximo de cada cosa
+    //maximos numero post de un usuario
+    //maximo numero de comentarios en cada post
+    //cuantos usuarios hay (10)
 }

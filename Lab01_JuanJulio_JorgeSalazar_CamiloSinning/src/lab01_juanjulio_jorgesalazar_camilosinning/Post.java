@@ -11,9 +11,18 @@ package lab01_juanjulio_jorgesalazar_camilosinning;
  */
 public class Post {
     
+    int id;
     int userId;
     String post;
-    String title;
-    int id;
-    //agregar la lista de comentarios.
+    String title;   
+    Comment[] myComments;
+
+    public Post(int userId, String post, String title, int id, int HMComments) {
+        this.userId = userId;
+        this.post = post;
+        this.title = title;
+        this.id = id;
+        this.myComments = new Comment[HMComments];
+    }
+    
 }

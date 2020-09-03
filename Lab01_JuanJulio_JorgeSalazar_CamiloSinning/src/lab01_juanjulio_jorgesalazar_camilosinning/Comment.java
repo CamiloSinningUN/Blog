@@ -14,5 +14,13 @@ public class Comment {
     int postId;
     String name;
     String email;
-    //lista de respuestas
+    
+
+    public Comment(String comment, int postId, String name, String email) {
+        this.comment = comment;
+        this.postId = postId;
+        this.name = name;
+        this.email = email;       
+    }
+    
 }

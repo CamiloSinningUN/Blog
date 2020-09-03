@@ -14,11 +14,24 @@ public class User {
     String username;
     String name;
     String email;
-    //address
+    String address;
     String phone;
     String website;
-    //Company
-    //lista de comentarios
+    String company;
+    Post[] myPosts;  
     //Lista de post
+
+    public User(int id, String username, String name, String email, String address, String phone, String website, String company, int HMPosts) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+        this.website = website;
+        this.company = company;
+        this.myPosts = new Post[HMPosts];
+    }
+    
     
 }
