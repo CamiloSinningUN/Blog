@@ -2,16 +2,24 @@
 package lab01_juanjulio_jorgesalazar_camilosinning;
 
 public class BIK_Blog extends javax.swing.JFrame {
-
-    //Lista de usuarios
-    User[] myUsers;
-    
+   
+ 
+    Blog Raiz;
     public BIK_Blog() {
         initComponents();
-        myUsers = new User[10];
+        Raiz = null;
     }
     
-    
+    public void Feed(){
+        JsonMethods.ShowPosts();
+    }
+    public void InfoUser(int id){
+        //JsonMethods.ShowUser(id);
+        //
+    }
+    public void Post_User(int idUser){
+        //Recorro post con id del use
+    }
 
     
     
@@ -88,6 +96,8 @@ public class BIK_Blog extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(BIK_Blog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        JsonMethods.ShowUsers();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

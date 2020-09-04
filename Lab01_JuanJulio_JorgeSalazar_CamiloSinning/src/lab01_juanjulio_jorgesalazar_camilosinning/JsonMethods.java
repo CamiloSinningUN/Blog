@@ -18,7 +18,7 @@ import java.io.IOException;
 public class JsonMethods {
     
     //Metodo de prueba (Inicio)
-    public static void ShowPost() {
+    public static void ShowPosts() {
         
         File f = new File("Posts.json");
         try {
