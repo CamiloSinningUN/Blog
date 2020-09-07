@@ -97,7 +97,11 @@ public class BIK_Blog extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-        JsonMethods.ShowUsers();
+        //probando metodos de split
+        String users[] = JsonMethods.SplitUsers();
+        for (int i = 0; i < 10; i++) {
+            System.out.println(users[i]);
+        }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
