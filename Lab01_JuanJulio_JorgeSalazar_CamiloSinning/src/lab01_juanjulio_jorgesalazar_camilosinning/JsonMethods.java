@@ -166,7 +166,7 @@ public class JsonMethods {
                     i=i+1;
                     palabra = myUser.substring(i,i+1);
                 }
-                int hastanum = i-1;
+                int hastanum = i;                
                 id = Integer.parseInt(myUser.substring(desdenum, hastanum));
             }            
         }  
