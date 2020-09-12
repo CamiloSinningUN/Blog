@@ -204,10 +204,7 @@ public class JsonMethods {
         website = InfoString("\"website\"", myUser);
         System.out.println(website);
         //Company
-        
-        //falta esto |
-        //           V 
-        
+              
         //caso especial
         companyName = "";
         boolean sw = true;
@@ -251,6 +248,7 @@ public class JsonMethods {
         //
 
         // falta cantidad de post
+        
         //Company
         Company company = new Company(companyName,catchPhrase,bs);       
         //address
@@ -375,9 +373,10 @@ public class JsonMethods {
         int answer = 0;
         boolean sw = true;
         int i = 0;
-        String palabra;
+        String palabra="";
         while (sw) {
             i = i + 1;
+            
             palabra = json.substring(i, i + word.length());
             if (palabra.equals(word)) {
                 sw = false;

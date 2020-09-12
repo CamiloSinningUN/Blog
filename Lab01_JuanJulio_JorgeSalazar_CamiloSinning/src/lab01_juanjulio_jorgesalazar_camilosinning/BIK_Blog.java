@@ -88,10 +88,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-        String[] users = JsonMethods.SplitUsers();
-        for (int i = 0; i < 10; i++) {
-            JsonMethods.StringToUser(users[i]);
-        }
+        
         
         
        
