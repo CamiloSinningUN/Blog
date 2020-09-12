@@ -41,10 +41,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
@@ -130,14 +126,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 80, 60));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 680, -1));
-
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 110, -1, 280));
-
-        jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 30, 280));
-        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 680, 120));
 
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
@@ -145,14 +133,14 @@ public class BIK_Blog extends javax.swing.JFrame {
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jTextArea2.setText("eum non blanditiis soluta porro quibusdam voluptas\\nvel \nvoluptatem qui placeat dolores qui velit aut\\nvel inventore\naut cumque culpa explicabo aliquid at\\nperspiciatis \nest et voluptatem dignissimos dolor itaque sit nam");
-        jTextArea2.setBorder(null);
+        jTextArea2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
         jTextArea2.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextArea2.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jTextArea2.setMargin(new java.awt.Insets(20, 20, 20, 20));
         jScrollPane2.setViewportView(jTextArea2);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 640, 230));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 700, 280));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,10 +260,6 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
