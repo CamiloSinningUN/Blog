@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 public class JsonMethods {
 
-    //Metodo de prueba (Inicio)
+    //Metodo de prueba en consola (Inicio)
     public static void ShowPosts() {
 
         File f = new File("Posts.json");
@@ -139,53 +139,126 @@ public class JsonMethods {
 
     public static User StringToUser(String myUser) {
         int id = 0;
-        String username = "";
-        String name = "";
-        String email = "";
+        String username;
+        String name;
+        String email;
+        
         //address
-        
-        //
-        String address;
-        //geo
-        
-        //     
-        String phone = "";
-        String website = "";
+        String street;
+        String suite;
+        String city;
+        String zipcode;       
+            //geo
+            String lat;
+            String lng;
+            //
+        //       
+        String phone;
+        String website;
         //company;
-        
+        String companyName;
+        String catchPhrase;
+        String bs;       
         //
+        
+        //falta esto |
+        //           V   
         Post[] myPosts;
-
-        // recorrer texto para hallar id       
+      
         id = InfoInt("\"id\"", myUser);
         System.out.println(id);
 
-        // recorrer texto para hallar name
         name = InfoString("\"name\"", myUser);
         System.out.println(name);
 
-        // recorrer texto para hallar username
         username = InfoString("\"username\"", myUser);
         System.out.println(username);
 
-        // recorrer texto para hallar email
         email = InfoString("\"email\"", myUser);
         System.out.println(email);
 
-        //falta address
-        // recorrer texto para hallar phone
+        //address
+        street = InfoString("\"street\"", myUser);
+        System.out.println(street);
+        
+        suite = InfoString("\"suite\"", myUser);
+        System.out.println(suite);
+        
+        city = InfoString("\"city\"", myUser);
+        System.out.println(city);
+        
+        zipcode = InfoString("\"zipcode\"", myUser);
+        System.out.println(zipcode);        
+            //geo
+            lat = InfoString("\"lat\"", myUser);
+            System.out.println(lat);
+        
+            lng = InfoBody("\"lng\"", myUser);
+            System.out.println(lng);
+            //
+        //
+       
         phone = InfoString("\"phone\"", myUser);
         System.out.println(phone);
-
-        // recorrer texto para hallar website
+        
         website = InfoString("\"website\"", myUser);
         System.out.println(website);
+        //Company
+        
+        //falta esto |
+        //           V 
+        
+        //caso especial
+        companyName = "";
+        boolean sw = true;
+        int i = 0;
+        String palabra;
+        while (sw) {
+            
+            palabra = myUser.substring(i, i + 9);
+            if (palabra.equals("\"company\"")) {
+                sw = false;
+                String Antedesde = myUser.substring(i + 9);
+                int desdenum = i + 12;
+                while (!palabra.equals("\"name\"")) {                                     
+                    
+                    i = i + 1;
+                    palabra = myUser.substring(i, i + 6);   
+                                     
+                }
+                desdenum = i + 9;
+                i=i+9;
+                while (!palabra.equals(",")) {                                     
+                    
+                    i = i + 1;
+                    palabra = myUser.substring(i, i + 1);   
+                                     
+                }
+                int hastanum = i - 1;
+                companyName = myUser.substring(desdenum, hastanum);
+            }
+            i = i + 1;
+        }
+        System.out.println(companyName);
+        //
+      
+        
+        catchPhrase = InfoString("\"catchPhrase\"", myUser);
+        System.out.println(catchPhrase);
+        
+        bs = InfoBody("\"bs\"", myUser);  
+        System.out.println(bs);        
+        //
 
-        // falta company,address,cantidad de post
-        User u = new User(id, username, name, email, null, phone, website, null, 0);
-
-        //falta inicalizar el objeto usuario que devolver
-        //de momento
+        // falta cantidad de post
+        //Company
+        Company company = new Company(companyName,catchPhrase,bs);       
+        //address
+        Geo geo = new Geo(Float.parseFloat(lat),Float.parseFloat(lng));
+        Address address = new Address(street,suite,city,zipcode,geo);
+        //user
+        User u = new User(id, username, name, email, address, phone, website, company, 0);
+       
         return u;
     }
 
