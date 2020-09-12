@@ -9,20 +9,16 @@ package lab01_juanjulio_jorgesalazar_camilosinning;
  *
  * @author camil
  */
-public class Comment {
-    String comment;
-    int postId;
-    int id;
+public class Company {
     String name;
-    String email;
-    
+    String catchPhrase;
+    String bs;
 
-    public Comment(String comment, int postId,int id, String name, String email) {
-        this.comment = comment;
-        this.postId = postId;
-        this.id=id;
+    public Company(String name, String catchPhrase, String bs) {
         this.name = name;
-        this.email = email;       
+        this.catchPhrase = catchPhrase;
+        this.bs = bs;
     }
+    
     
 }

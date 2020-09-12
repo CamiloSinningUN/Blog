@@ -10,16 +10,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         Raiz = null;
     }
     
-    public void Feed(){
-        JsonMethods.ShowPosts();
-    }
-    public void InfoUser(int id){
-        //JsonMethods.ShowUser(id);
-        //
-    }
-    public void Post_User(int idUser){
-        //Recorro post con id del use
-    }
+    
 
     
     
@@ -97,15 +88,13 @@ public class BIK_Blog extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-        
-        
-        //probando metodos de split
-        String users[] = JsonMethods.SplitUsers();
+        String[] users = JsonMethods.SplitUsers();
         for (int i = 0; i < 10; i++) {
-            System.out.println(users[i]);
+            JsonMethods.StringToUser(users[i]);
         }
-        JsonMethods.StringToUser(users[9]);
-
+        
+        
+       
         
         
         /* Create and display the form */
