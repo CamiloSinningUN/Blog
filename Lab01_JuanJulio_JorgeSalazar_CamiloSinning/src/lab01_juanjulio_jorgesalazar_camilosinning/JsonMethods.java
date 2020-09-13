@@ -159,50 +159,46 @@ public class JsonMethods {
         String companyName;
         String catchPhrase;
         String bs;       
-        //
-        
-        //falta esto |
-        //           V   
-        Post[] myPosts;
+        //      
       
         id = InfoInt("\"id\"", myUser);
-        System.out.println(id);
+        //System.out.println(id);
 
         name = InfoString("\"name\"", myUser);
-        System.out.println(name);
+        //System.out.println(name);
 
         username = InfoString("\"username\"", myUser);
-        System.out.println(username);
+        //System.out.println(username);
 
         email = InfoString("\"email\"", myUser);
-        System.out.println(email);
+        //System.out.println(email);
 
         //address
         street = InfoString("\"street\"", myUser);
-        System.out.println(street);
+        //System.out.println(street);
         
         suite = InfoString("\"suite\"", myUser);
-        System.out.println(suite);
+        //System.out.println(suite);
         
         city = InfoString("\"city\"", myUser);
-        System.out.println(city);
+        //System.out.println(city);
         
         zipcode = InfoString("\"zipcode\"", myUser);
-        System.out.println(zipcode);        
+        //System.out.println(zipcode);        
             //geo
             lat = InfoString("\"lat\"", myUser);
-            System.out.println(lat);
+            //System.out.println(lat);
         
             lng = InfoBody("\"lng\"", myUser);
-            System.out.println(lng);
+            //System.out.println(lng);
             //
         //
        
         phone = InfoString("\"phone\"", myUser);
-        System.out.println(phone);
+        //System.out.println(phone);
         
         website = InfoString("\"website\"", myUser);
-        System.out.println(website);
+        //System.out.println(website);
         //Company
               
         //caso especial
@@ -236,15 +232,15 @@ public class JsonMethods {
             }
             i = i + 1;
         }
-        System.out.println(companyName);
+        //System.out.println(companyName);
         //
       
         
         catchPhrase = InfoString("\"catchPhrase\"", myUser);
-        System.out.println(catchPhrase);
+        //System.out.println(catchPhrase);
         
         bs = InfoBody("\"bs\"", myUser);  
-        System.out.println(bs);        
+        //System.out.println(bs);        
         //
 
         // falta cantidad de post
@@ -255,7 +251,7 @@ public class JsonMethods {
         Geo geo = new Geo(Float.parseFloat(lat),Float.parseFloat(lng));
         Address address = new Address(street,suite,city,zipcode,geo);
         //user
-        User u = new User(id, username, name, email, address, phone, website, company, 0);
+        User u = new User(id, username, name, email, address, phone, website, company);
        
         return u;
     }
@@ -429,19 +425,19 @@ public class JsonMethods {
         String email;
 
         postId = InfoInt("\"postId\"", myComment);
-        System.out.println(postId);
+        //System.out.println(postId);
 
         id = InfoInt("\"id\"", myComment);
-        System.out.println(id);
+        //System.out.println(id);
 
         name = InfoString("\"name\"", myComment);
-        System.out.println(name);
+        //System.out.println(name);
 
         email = InfoString("\"email\"", myComment);
-        System.out.println(email);
+        //System.out.println(email);
 
         comment = InfoBody("\"body\"", myComment);
-        System.out.println(comment);
+        //System.out.println(comment);
 
         Comment c = new Comment(comment, postId, id, name, email);
 
@@ -538,20 +534,20 @@ public class JsonMethods {
         String title;
 
         userId = InfoInt("\"userId\"", myPost);
-        System.out.println(userId);
+        //System.out.println(userId);
 
         id = InfoInt("\"id\"", myPost);
-        System.out.println(id);
+        //System.out.println(id);
 
         title = InfoString("\"title\"", myPost);
-        System.out.println(title);
+        //System.out.println(title);
 
         post = InfoBody("\"body\"", myPost);
-        System.out.println(post);
+        //System.out.println(post);
         
 
         //falta array
-        Post p = new Post(userId, post, title, id, 0);
+        Post p = new Post(userId, post, title, id);
 
         return p;
     }

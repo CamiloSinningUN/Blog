@@ -5,16 +5,34 @@
  */
 package lab01_juanjulio_jorgesalazar_camilosinning;
 
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
+
 /**
  *
  * @author camil
  */
 public class Blog {
     String name;
-    User[] myUsers;
+    ArrayList<User> myUsers;
 
-    public Blog(int HMUsers) {      
-        this.myUsers = new User[HMUsers];
+    public Blog() {      
+        myUsers = new ArrayList<>();
+        
+    }
+    
+    public int next(int Here, JEditorPane principalEditorPane, JButton backButton, JButton nextButton ){
+         for (User user : myUsers) {
+             Here = user.next(Here, principalEditorPane, backButton, nextButton);           
+        }
+        return Here; 
+    }
+    public int back(int Here, JEditorPane principalEditorPane, JButton backButton){
+        for (User user : myUsers) {
+            Here = user.back(Here, principalEditorPane, backButton);           
+        }
+        return Here;
     }
     
 }
