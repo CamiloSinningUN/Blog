@@ -5,6 +5,8 @@
  */
 package lab01_juanjulio_jorgesalazar_camilosinning;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author camil
@@ -15,14 +17,14 @@ public class Post {
     int userId;
     String post;
     String title;   
-    Comment[] myComments;
+    ArrayList<Comment> myComments;
 
-    public Post(int userId, String post, String title, int id, int HMComments) {
+    public Post(int userId, String post, String title, int id) {
         this.userId = userId;
         this.post = post;
         this.title = title;
         this.id = id;
-        this.myComments = new Comment[HMComments];
+        myComments = new ArrayList<>();
     }
     
 }

@@ -5,14 +5,62 @@ import javax.swing.JOptionPane;
 
 public class BIK_Blog extends javax.swing.JFrame {
 
-    Blog Raiz;
+ HEAD
+
+
+    Blog Raiz = new Blog();
+    int Here;
+d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
 
     public BIK_Blog() {
         initComponents();
         this.setLocationRelativeTo(null);
-        Raiz = null;
+        //Inicio
+        Begin();
     }
 
+    public void Begin() {
+        String[] comments;
+        String[] posts;
+        String[] users;
+        comments = JsonMethods.SplitComments();
+        users = JsonMethods.SplitUsers();
+        posts = JsonMethods.SplitPosts();
+
+        //Agregar usuarios a raiz
+        for (String user : users) {
+            User u = JsonMethods.StringToUser(user);
+            //Agregar post a usuario
+            for (String post : posts) {
+                Post p = JsonMethods.StringToPost(post);
+                if (p.userId == u.id) {
+                    u.myPosts.add(p);
+                }
+                //agregar comments a post
+                for (String comment : comments) {
+                    Comment c = JsonMethods.StringToComment(comment);
+                    if (c.postId == p.id) {
+                        p.myComments.add(c);
+                    }
+                }
+            }
+            Raiz.myUsers.add(u);
+        }
+
+        //poner post inicial
+        String title = Raiz.myUsers.get(0).myPosts.get(0).title;
+        String post = Raiz.myUsers.get(0).myPosts.get(0).post;
+        principalEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + post);
+        Here = 1;
+        //no hay nodo anterior
+        backButton.setEnabled(false);
+
+    }
+
+ HEAD
+
+    
+ d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,11 +81,11 @@ public class BIK_Blog extends javax.swing.JFrame {
         Buscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        backButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        principalEditorPane = new javax.swing.JEditorPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -124,38 +172,33 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel4.setText("Posts:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 250, 100));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 80, 60));
+        backButton.setBackground(new java.awt.Color(255, 255, 255));
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
+        backButton.setBorder(null);
+        backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 80, 60));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/share.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 80, 60));
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Maiandra GD", 0, 24)); // NOI18N
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("eum non blanditiis soluta porro quibusdam voluptas\\nvel \nvoluptatem qui placeat dolores qui velit aut\\nvel inventore\naut cumque culpa explicabo aliquid at\\nperspiciatis \nest et voluptatem dignissimos dolor itaque sit nam");
-        jTextArea2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
-        jTextArea2.setCaretColor(new java.awt.Color(255, 255, 255));
-        jTextArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTextArea2.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jTextArea2.setMargin(new java.awt.Insets(20, 20, 20, 20));
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 700, 280));
+        nextButton.setBackground(new java.awt.Color(255, 255, 255));
+        nextButton.setForeground(new java.awt.Color(255, 255, 255));
+        nextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/share.png"))); // NOI18N
+        nextButton.setBorder(null);
+        nextButton.setBorderPainted(false);
+        nextButton.setContentAreaFilled(false);
+        nextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 80, 60));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,6 +213,13 @@ public class BIK_Blog extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, 40, 50));
+
+        principalEditorPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
+        principalEditorPane.setContentType("text/html"); // NOI18N
+        principalEditorPane.setFont(new java.awt.Font("Maiandra GD", 0, 24)); // NOI18N
+        jScrollPane1.setViewportView(principalEditorPane);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 710, 310));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 770, 530));
 
@@ -215,6 +265,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+ HEAD
     private void UserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UserIDActionPerformed
@@ -235,6 +286,15 @@ public class BIK_Blog extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        Here = Raiz.back(Here, principalEditorPane, backButton);
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        Here = Raiz.next(Here, principalEditorPane, backButton, nextButton);
+    }//GEN-LAST:event_nextButtonActionPerformed
+ d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
 
     /**
      * @param args the command line arguments
@@ -267,16 +327,21 @@ public class BIK_Blog extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new BIK_Blog().setVisible(true);
+
             }
         });
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+ HEAD
     private javax.swing.JButton Buscar;
     private javax.swing.JTextField UserID;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+
+    private javax.swing.JButton backButton;
+d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -289,8 +354,14 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+ HEAD
     private javax.swing.JTextArea jTextArea2;
+
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JEditorPane principalEditorPane;
+ d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
     // End of variables declaration//GEN-END:variables
 }
