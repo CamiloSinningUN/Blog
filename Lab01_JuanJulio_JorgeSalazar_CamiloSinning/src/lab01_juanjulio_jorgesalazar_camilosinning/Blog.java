@@ -22,15 +22,15 @@ public class Blog {
         
     }
     
-    public int next(int Here, JEditorPane principalEditorPane, JButton backButton, JButton nextButton ){
+    public int next(int Here, JEditorPane principalEditorPane){
          for (User user : myUsers) {
-             Here = user.next(Here, principalEditorPane, backButton, nextButton);           
+             Here = user.next(Here, principalEditorPane);           
         }
         return Here; 
     }
-    public int back(int Here, JEditorPane principalEditorPane, JButton backButton, JButton nextButton){
+    public int back(int Here, JEditorPane principalEditorPane){
         for (User user : myUsers) {
-            Here = user.back(Here, principalEditorPane, backButton,nextButton);           
+            Here = user.back(Here, principalEditorPane);           
         }
         return Here;
     }

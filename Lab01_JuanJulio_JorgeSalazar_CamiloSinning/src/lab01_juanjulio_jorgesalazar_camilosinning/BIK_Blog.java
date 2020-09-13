@@ -6,7 +6,9 @@ import javax.swing.JOptionPane;
 public class BIK_Blog extends javax.swing.JFrame {
 
     Blog Raiz = new Blog();
-    int Here;
+    int PrincipalHere;
+    int UserHere;
+    User UserNow;
 
     public BIK_Blog() {
         initComponents();
@@ -48,10 +50,63 @@ public class BIK_Blog extends javax.swing.JFrame {
         String title = Raiz.myUsers.get(0).myPosts.get(0).title;
         String post = Raiz.myUsers.get(0).myPosts.get(0).post;
         principalEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + post);
-        Here = 1;
+        PrincipalHere = 1;
+
         //no hay nodo anterior
         backButton.setEnabled(false);
+        nextButton.setEnabled(true);
 
+    }
+
+    public void BeginUser(int id) {
+
+        UserNow = Raiz.SearchUser(id);
+        if (UserNow != null) {
+            this.setVisible(false);
+            userInfo.setVisible(true);
+            infoUserEditorPane.setText("<b> Name: </b>" + UserNow.name + "<br>"
+                    + "<b> username: </b>" + UserNow.username + "<br>"
+                    + "<b> email: </b>" + UserNow.username + "<br>"
+                    + "<b> address: </b><br>"
+                    + "<b>&nbsp;street: </b>" + UserNow.address.street + "<br>"
+                    + "<b>&nbsp;suite: </b>" + UserNow.address.suite + "<br>"
+                    + "<b>&nbsp;city: </b>" + UserNow.address.city + "<br>"
+                    + "<b>&nbsp;zipdoce: </b>" + UserNow.address.zipcode + "<br>"
+                    + "<b>&nbsp;geo: </b><br>"
+                    + "<b>&nbsp;&nbsp;lat: </b>" + UserNow.address.geo.lat + "<br>"
+                    + "<b>&nbsp;&nbsp;lng: </b>" + UserNow.address.geo.lng + "<br>"
+                    + "<b> phone: </b>" + UserNow.phone + "<br>"
+                    + "<b> website: </b>" + UserNow.website + "<br>"
+                    + "<b> company: </b><br>"
+                    + "<b>&nbsp;name: </b>" + UserNow.company.name + "<br>"
+                    + "<b>&nbsp;catchPhrase: </b>" + UserNow.company.catchPhrase + "<br>"
+                    + "<b>&nbsp;bs: </b>" + UserNow.company.bs + "<br>");
+
+            String title = UserNow.myPosts.get(0).title;
+            String post = UserNow.myPosts.get(0).post;
+            infoUserPostEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + post);
+
+            //no hay nodo anterior
+            infoUserBackButton.setEnabled(false);
+            infoUserNextButton.setEnabled(true);
+            UserHere = UserNow.myPosts.get(0).id;
+        } else {
+            System.out.println("mucho texto");
+        }
+        UserID.setText("");
+
+    }
+
+    public Post SearchPost(int id) {
+        Post post = null;
+        for (User u : Raiz.myUsers) {
+            for (Post p : u.myPosts) {
+                if (p.id == id) {
+                    post = p;
+                }
+            }
+        }
+        return post;
     }
 
     /**
@@ -70,11 +125,11 @@ public class BIK_Blog extends javax.swing.JFrame {
         infoUserEditorPane = new javax.swing.JEditorPane();
         jPanel5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        backButton1 = new javax.swing.JButton();
-        nextButton1 = new javax.swing.JButton();
+        infoUserBackButton = new javax.swing.JButton();
+        infoUserNextButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        principalEditorPane2 = new javax.swing.JEditorPane();
+        infoUserPostEditorPane = new javax.swing.JEditorPane();
         jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -96,7 +151,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         principalEditorPane = new javax.swing.JEditorPane();
-        jButton5 = new javax.swing.JButton();
+        infoPostButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -135,33 +190,33 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel14.setText("Posts:");
         jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 250, 100));
 
-        backButton1.setBackground(new java.awt.Color(255, 255, 255));
-        backButton1.setForeground(new java.awt.Color(255, 255, 255));
-        backButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
-        backButton1.setBorder(null);
-        backButton1.setBorderPainted(false);
-        backButton1.setContentAreaFilled(false);
-        backButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backButton1.addActionListener(new java.awt.event.ActionListener() {
+        infoUserBackButton.setBackground(new java.awt.Color(255, 255, 255));
+        infoUserBackButton.setForeground(new java.awt.Color(255, 255, 255));
+        infoUserBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
+        infoUserBackButton.setBorder(null);
+        infoUserBackButton.setBorderPainted(false);
+        infoUserBackButton.setContentAreaFilled(false);
+        infoUserBackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        infoUserBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButton1ActionPerformed(evt);
+                infoUserBackButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(backButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 80, 60));
+        jPanel5.add(infoUserBackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 80, 60));
 
-        nextButton1.setBackground(new java.awt.Color(255, 255, 255));
-        nextButton1.setForeground(new java.awt.Color(255, 255, 255));
-        nextButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/share.png"))); // NOI18N
-        nextButton1.setBorder(null);
-        nextButton1.setBorderPainted(false);
-        nextButton1.setContentAreaFilled(false);
-        nextButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        nextButton1.addActionListener(new java.awt.event.ActionListener() {
+        infoUserNextButton.setBackground(new java.awt.Color(255, 255, 255));
+        infoUserNextButton.setForeground(new java.awt.Color(255, 255, 255));
+        infoUserNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/share.png"))); // NOI18N
+        infoUserNextButton.setBorder(null);
+        infoUserNextButton.setBorderPainted(false);
+        infoUserNextButton.setContentAreaFilled(false);
+        infoUserNextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        infoUserNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextButton1ActionPerformed(evt);
+                infoUserNextButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(nextButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 80, 60));
+        jPanel5.add(infoUserNextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 80, 60));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,10 +237,10 @@ public class BIK_Blog extends javax.swing.JFrame {
         });
         jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 40, 50));
 
-        principalEditorPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
-        principalEditorPane2.setContentType("text/html"); // NOI18N
-        principalEditorPane2.setFont(new java.awt.Font("Maiandra GD", 0, 24)); // NOI18N
-        jScrollPane3.setViewportView(principalEditorPane2);
+        infoUserPostEditorPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
+        infoUserPostEditorPane.setContentType("text/html"); // NOI18N
+        infoUserPostEditorPane.setFont(new java.awt.Font("Maiandra GD", 0, 24)); // NOI18N
+        jScrollPane3.setViewportView(infoUserPostEditorPane);
 
         jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 710, 310));
 
@@ -362,24 +417,24 @@ public class BIK_Blog extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 710, 310));
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/account-question (1).png"))); // NOI18N
-        jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        infoPostButton.setBackground(new java.awt.Color(255, 255, 255));
+        infoPostButton.setForeground(new java.awt.Color(255, 255, 255));
+        infoPostButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/account-question (1).png"))); // NOI18N
+        infoPostButton.setBorder(null);
+        infoPostButton.setBorderPainted(false);
+        infoPostButton.setContentAreaFilled(false);
+        infoPostButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        infoPostButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
+                infoPostButtonMouseClicked(evt);
             }
         });
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        infoPostButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                infoPostButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 40, 50));
+        jPanel2.add(infoPostButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 40, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 770, 530));
 
@@ -421,13 +476,9 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabel7MouseClicked
 
-
- 
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                        
-
+    }
 
 
     private void UserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserIDActionPerformed
@@ -447,50 +498,58 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_UserIDKeyReleased
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        userInfo.setVisible(true);
         String id = UserID.getText();
-        User u = Raiz.SearchUser(Integer.parseInt(id));
-        if (u != null) {
-            infoUserEditorPane.setText("<b> Name: </b>" + u.name + "<br>"
-                    + "<b> username: </b>" + u.username + "<br>"
-                    + "<b> email: </b>" + u.username + "<br>"
-                    + "<b> address: </b><br>"
-                    + "<b>&nbsp;street: </b>" + u.address.street + "<br>"
-                    + "<b>&nbsp;suite: </b>" + u.address.suite + "<br>"
-                    + "<b>&nbsp;city: </b>" + u.address.city + "<br>"
-                    + "<b>&nbsp;zipdoce: </b>" + u.address.zipcode + "<br>"
-                    + "<b>&nbsp;geo: </b><br>"
-                    + "<b>&nbsp;&nbsp;lat: </b>" + u.address.geo.lat + "<br>"
-                    + "<b>&nbsp;&nbsp;lng: </b>" + u.address.geo.lng + "<br>"
-                    + "<b> phone: </b>" + u.phone + "<br>"
-                    + "<b> website: </b>" + u.website + "<br>"
-                    + "<b> company: </b><br>"
-                    + "<b>&nbsp;name: </b>" + u.company.name + "<br>"
-                    + "<b>&nbsp;catchPhrase: </b>" + u.company.catchPhrase + "<br>"
-                    + "<b>&nbsp;bs: </b>" + u.company.bs + "<br>");
+        try {
+            BeginUser(Integer.parseInt(id));
+        } catch (NumberFormatException e) {
+            System.out.println("mucho texto");
         }
-        UserID.setText("");
-
 
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        Here = Raiz.back(Here, principalEditorPane, backButton,nextButton);
+        PrincipalHere = Raiz.back(PrincipalHere, principalEditorPane);
+        if (PrincipalHere == 1) {
+            backButton.setEnabled(false);
+        }
+        if (PrincipalHere < 100) {
+            nextButton.setEnabled(true);
+        }
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        Here = Raiz.next(Here, principalEditorPane, backButton, nextButton);
+        PrincipalHere = Raiz.next(PrincipalHere, principalEditorPane);
+        if (PrincipalHere > 1) {
+            backButton.setEnabled(true);
+        }
+        if (PrincipalHere >= 100) {
+            nextButton.setEnabled(false);
+        }
     }//GEN-LAST:event_nextButtonActionPerformed
 
-    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_backButton1ActionPerformed
+    private void infoUserBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoUserBackButtonActionPerformed
+        UserHere = UserNow.back(UserHere, infoUserPostEditorPane);
+        if (UserHere == UserNow.myPosts.get(0).id) {
+            infoUserBackButton.setEnabled(false);
+        }
+        if (UserHere < UserNow.myPosts.size() + UserNow.myPosts.get(0).id - 1) {
+            infoUserNextButton.setEnabled(true);
+        }
 
-    private void nextButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nextButton1ActionPerformed
+    }//GEN-LAST:event_infoUserBackButtonActionPerformed
+
+    private void infoUserNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoUserNextButtonActionPerformed
+        UserHere = UserNow.next(UserHere, infoUserPostEditorPane);
+        if (UserHere > UserNow.myPosts.get(0).id) {
+            infoUserBackButton.setEnabled(true);
+        }
+
+        if (UserHere >= UserNow.myPosts.size() + UserNow.myPosts.get(0).id - 1) {
+            infoUserNextButton.setEnabled(false);
+        }
+
+
+    }//GEN-LAST:event_infoUserNextButtonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -503,7 +562,7 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
+        userInfo.setVisible(false);
         setVisible(true);
     }//GEN-LAST:event_jLabel16MouseClicked
 
@@ -513,22 +572,27 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel17MouseClicked
 
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void infoPostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoPostButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_infoPostButtonActionPerformed
 
- 
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        // TODO add your handling code here:
-        Buscar.doClick();
-    }//GEN-LAST:event_jButton5MouseClicked
+    private void infoPostButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoPostButtonMouseClicked
+        Post post = SearchPost(PrincipalHere);
+        BeginUser(post.userId);
+        String title = post.title;
+        String info = post.post;
+        infoUserPostEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + info);
+        infoUserBackButton.setEnabled(false);
+        infoUserNextButton.setEnabled(false);
+
+
+    }//GEN-LAST:event_infoPostButtonMouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
+
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton4MouseClicked
-
-
 
     /**
      * @param args the command line arguments
@@ -571,14 +635,13 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JButton Buscar;
     private javax.swing.JTextField UserID;
     private javax.swing.JButton backButton;
-    private javax.swing.JButton backButton1;
+    private javax.swing.JButton infoPostButton;
+    private javax.swing.JButton infoUserBackButton;
     private javax.swing.JEditorPane infoUserEditorPane;
+    private javax.swing.JButton infoUserNextButton;
+    private javax.swing.JEditorPane infoUserPostEditorPane;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-
-    private javax.swing.JButton jButton5;
-    private javax.swing.JFrame jFrame2;
-
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -604,9 +667,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton nextButton;
-    private javax.swing.JButton nextButton1;
     private javax.swing.JEditorPane principalEditorPane;
-    private javax.swing.JEditorPane principalEditorPane2;
     private javax.swing.JFrame userInfo;
     // End of variables declaration//GEN-END:variables
 }

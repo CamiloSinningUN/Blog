@@ -38,43 +38,28 @@ public class User {
         myPosts = new ArrayList<>();
     }
 
-    public int next(int Here, JEditorPane principalEditorPane, JButton backButton, JButton nextButton) {
+    public int next(int Here, JEditorPane principalEditorPane) {
         for (Post p : myPosts) {
             if (p.id == Here + 1) {
                 String title = p.title;
                 String post = p.post;
                 System.out.println(p.id);
                 principalEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + post);
-                Here = Here + 1;
-                if (Here > 1) {
-                    backButton.setEnabled(true);
-                }
-                if (Here >= 100) {
-                    nextButton.setEnabled(false);
-                }
-                    
-                
+                Here = Here + 1;              
                 break;
             }
         }
         return Here;
     }
 
-    public int back(int Here, JEditorPane principalEditorPane, JButton backButton, JButton nextButton) {
+    public int back(int Here, JEditorPane principalEditorPane) {
         for (Post p : myPosts) {
             if (p.id == Here - 1) {
                 String title = p.title;
                 String post = p.post;
                 System.out.println(p.id);
                 principalEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + post);
-                Here = Here - 1;
-                if (Here == 1) {
-                    backButton.setEnabled(false);
-                }
-                if (Here < 100) {
-                    nextButton.setEnabled(true);
-                }
-
+                Here = Here - 1;               
                 break;
             }
         }
