@@ -1,24 +1,18 @@
-
 package lab01_juanjulio_jorgesalazar_camilosinning;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class BIK_Blog extends javax.swing.JFrame {
-   
- 
+
     Blog Raiz;
+
     public BIK_Blog() {
         initComponents();
         this.setLocationRelativeTo(null);
         Raiz = null;
     }
-    
-    
 
-    
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,11 +26,11 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        UserID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        Buscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -67,11 +61,27 @@ public class BIK_Blog extends javax.swing.JFrame {
         jSeparator1.setAutoscrolls(true);
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 260, 180, 10));
 
-        jTextField1.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Ingrese ID");
-        jTextField1.setBorder(null);
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 120, 40));
+        UserID.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        UserID.setForeground(new java.awt.Color(153, 153, 153));
+        UserID.setText("Enter ID");
+        UserID.setBorder(null);
+        UserID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        UserID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UserIDMouseClicked(evt);
+            }
+        });
+        UserID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserIDActionPerformed(evt);
+            }
+        });
+        UserID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                UserIDKeyReleased(evt);
+            }
+        });
+        jPanel1.add(UserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 120, 40));
 
         jLabel3.setBackground(new java.awt.Color(160, 194, 211));
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
@@ -88,14 +98,19 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel6.setText("UserID:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 210, 70, 32));
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/magnify.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 40, 50));
+        Buscar.setBackground(new java.awt.Color(255, 255, 255));
+        Buscar.setForeground(new java.awt.Color(255, 255, 255));
+        Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/magnify.png"))); // NOI18N
+        Buscar.setBorder(null);
+        Buscar.setBorderPainted(false);
+        Buscar.setContentAreaFilled(false);
+        Buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 40, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 580));
 
@@ -192,13 +207,34 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-            System.exit(0);
-        
+        System.exit(0);
+
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void UserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserIDActionPerformed
+
+    private void UserIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserIDMouseClicked
+        // TODO add your handling code here:
+        UserID.selectAll();
+    }//GEN-LAST:event_UserIDMouseClicked
+
+    private void UserIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserIDKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Buscar.doClick();
+        }
+    }//GEN-LAST:event_UserIDKeyReleased
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,27 +262,22 @@ public class BIK_Blog extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(BIK_Blog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
-        
-        
-        
-       
-        
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new BIK_Blog().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar;
+    private javax.swing.JTextField UserID;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -261,6 +292,5 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
