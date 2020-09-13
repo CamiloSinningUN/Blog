@@ -34,5 +34,13 @@ public class Blog {
         }
         return Here;
     }
-    
+    public User SearchUser(int id){
+        User u = null;
+        for (User user : myUsers) {
+            if(user.id==id){
+                u=user;
+            }
+        }
+        return u;
+    }
 }
