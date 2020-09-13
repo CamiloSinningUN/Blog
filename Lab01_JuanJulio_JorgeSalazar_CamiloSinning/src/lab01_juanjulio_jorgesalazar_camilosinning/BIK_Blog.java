@@ -15,6 +15,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     public BIK_Blog() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jFrame2.setLocationRelativeTo(null);
         //Inicio
         Begin();
     }
@@ -70,6 +71,23 @@ public class BIK_Blog extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame2 = new javax.swing.JFrame();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        principalEditorPane1 = new javax.swing.JEditorPane();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        backButton1 = new javax.swing.JButton();
+        nextButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        principalEditorPane2 = new javax.swing.JEditorPane();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -90,9 +108,134 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
+        jFrame2.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jFrame2.setUndecorated(true);
+        jFrame2.setResizable(false);
+        jFrame2.setSize(new java.awt.Dimension(1060, 580));
+        jFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/account-circle.png"))); // NOI18N
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 34, -1, -1));
+
+        jLabel11.setBackground(new java.awt.Color(160, 194, 211));
+        jLabel11.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(160, 194, 211));
+        jLabel11.setText("Bik Blog");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 520, 66, 32));
+
+        principalEditorPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
+        principalEditorPane1.setContentType("text/html"); // NOI18N
+        principalEditorPane1.setFont(new java.awt.Font("Maiandra GD", 0, 24)); // NOI18N
+        principalEditorPane1.setFocusable(false);
+        jScrollPane2.setViewportView(principalEditorPane1);
+
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 250, 310));
+
+        jFrame2.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 580));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setBackground(new java.awt.Color(58, 108, 146));
+        jLabel14.setFont(new java.awt.Font("Maiandra GD", 0, 70)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(58, 108, 146));
+        jLabel14.setText("Posts:");
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 250, 100));
+
+        backButton1.setBackground(new java.awt.Color(255, 255, 255));
+        backButton1.setForeground(new java.awt.Color(255, 255, 255));
+        backButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
+        backButton1.setBorder(null);
+        backButton1.setBorderPainted(false);
+        backButton1.setContentAreaFilled(false);
+        backButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButton1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(backButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 80, 60));
+
+        nextButton1.setBackground(new java.awt.Color(255, 255, 255));
+        nextButton1.setForeground(new java.awt.Color(255, 255, 255));
+        nextButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/share.png"))); // NOI18N
+        nextButton1.setBorder(null);
+        nextButton1.setBorderPainted(false);
+        nextButton1.setContentAreaFilled(false);
+        nextButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nextButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButton1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(nextButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 80, 60));
+
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/account-question (1).png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, 40, 50));
+
+        principalEditorPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
+        principalEditorPane2.setContentType("text/html"); // NOI18N
+        principalEditorPane2.setFont(new java.awt.Font("Maiandra GD", 0, 24)); // NOI18N
+        jScrollPane3.setViewportView(principalEditorPane2);
+
+        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 710, 310));
+
+        jFrame2.getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 770, 530));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Multiply_32px.png"))); // NOI18N
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/image.png"))); // NOI18N
+        jLabel16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, -1, -1));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Expand_Arrow_32px.png"))); // NOI18N
+        jLabel17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
+
+        jFrame2.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, -10, 770, 60));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        setSize(new java.awt.Dimension(1060, 580));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -284,7 +427,8 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-        
+        this.setVisible(false);
+        jFrame2.setVisible(true);
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -294,6 +438,34 @@ public class BIK_Blog extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         Here = Raiz.next(Here, principalEditorPane, backButton, nextButton);
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButton1ActionPerformed
+
+    private void nextButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nextButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        setVisible(true);
+    }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        // TODO add your handling code here:
+        jFrame2.setState(jFrame2.ICONIFIED);
+    }//GEN-LAST:event_jLabel17MouseClicked
 
 
     /**
@@ -334,16 +506,19 @@ public class BIK_Blog extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
- 
     private javax.swing.JButton Buscar;
     private javax.swing.JTextField UserID;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-
     private javax.swing.JButton backButton;
-
+    private javax.swing.JButton backButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -351,17 +526,21 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-
-    private javax.swing.JTextArea jTextArea2;
-
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton nextButton;
+    private javax.swing.JButton nextButton1;
     private javax.swing.JEditorPane principalEditorPane;
-
+    private javax.swing.JEditorPane principalEditorPane1;
+    private javax.swing.JEditorPane principalEditorPane2;
     // End of variables declaration//GEN-END:variables
 }
