@@ -5,12 +5,12 @@ import javax.swing.JOptionPane;
 
 public class BIK_Blog extends javax.swing.JFrame {
 
- HEAD
+ 
 
 
     Blog Raiz = new Blog();
     int Here;
-d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
+
 
     public BIK_Blog() {
         initComponents();
@@ -57,10 +57,10 @@ d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
 
     }
 
- HEAD
+
 
     
- d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -265,7 +265,7 @@ d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
- HEAD
+ 
     private void UserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UserIDActionPerformed
@@ -294,7 +294,7 @@ d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         Here = Raiz.next(Here, principalEditorPane, backButton, nextButton);
     }//GEN-LAST:event_nextButtonActionPerformed
- d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
+
 
     /**
      * @param args the command line arguments
@@ -334,14 +334,14 @@ d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
- HEAD
+ 
     private javax.swing.JButton Buscar;
     private javax.swing.JTextField UserID;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
 
     private javax.swing.JButton backButton;
-d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
+
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -356,12 +356,12 @@ d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
- HEAD
+
     private javax.swing.JTextArea jTextArea2;
 
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton nextButton;
     private javax.swing.JEditorPane principalEditorPane;
- d6ea0fd0ce94c6ebd7614a78697e2b23a393a3dc
+
     // End of variables declaration//GEN-END:variables
 }
