@@ -448,7 +448,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        Here = Raiz.back(Here, principalEditorPane, backButton);
+        Here = Raiz.back(Here, principalEditorPane, backButton,nextButton);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed

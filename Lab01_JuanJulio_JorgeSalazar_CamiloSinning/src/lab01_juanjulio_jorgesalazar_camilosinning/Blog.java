@@ -28,9 +28,9 @@ public class Blog {
         }
         return Here; 
     }
-    public int back(int Here, JEditorPane principalEditorPane, JButton backButton){
+    public int back(int Here, JEditorPane principalEditorPane, JButton backButton, JButton nextButton){
         for (User user : myUsers) {
-            Here = user.back(Here, principalEditorPane, backButton);           
+            Here = user.back(Here, principalEditorPane, backButton,nextButton);           
         }
         return Here;
     }
