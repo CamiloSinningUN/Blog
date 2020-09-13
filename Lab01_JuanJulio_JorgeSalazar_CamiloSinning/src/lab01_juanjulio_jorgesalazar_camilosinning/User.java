@@ -52,13 +52,15 @@ public class User {
                 if (Here >= 100) {
                     nextButton.setEnabled(false);
                 }
+                    
+                
                 break;
             }
         }
         return Here;
     }
 
-    public int back(int Here, JEditorPane principalEditorPane, JButton backButton) {
+    public int back(int Here, JEditorPane principalEditorPane, JButton backButton, JButton nextButton) {
         for (Post p : myPosts) {
             if (p.id == Here - 1) {
                 String title = p.title;
@@ -68,6 +70,9 @@ public class User {
                 Here = Here - 1;
                 if (Here == 1) {
                     backButton.setEnabled(false);
+                }
+                if (Here < 100) {
+                    nextButton.setEnabled(true);
                 }
 
                 break;
