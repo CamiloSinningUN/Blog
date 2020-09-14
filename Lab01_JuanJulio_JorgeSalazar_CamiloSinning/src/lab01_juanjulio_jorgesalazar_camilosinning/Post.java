@@ -27,4 +27,14 @@ public class Post {
         myComments = new ArrayList<>();
     }
     
+    public Comment next(int indexArray){
+        Comment c = myComments.get(indexArray+1);
+        return c;
+    }
+    
+    public Comment back(int indexArray){
+         Comment c = myComments.get(indexArray-1);
+         return c;
+    }
+    
 }

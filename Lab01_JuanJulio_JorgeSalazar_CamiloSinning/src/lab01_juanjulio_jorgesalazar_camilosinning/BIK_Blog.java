@@ -8,13 +8,18 @@ public class BIK_Blog extends javax.swing.JFrame {
     Blog Raiz = new Blog();
     int PrincipalHere;
     int UserHere;
+    int PostHereForComment;
+    int CommentHereIndexArray;
     User UserNow;
+    
+    //true si salio de principal, false si salio de user
+    boolean sw;
 
     public BIK_Blog() {
         initComponents();
         this.setLocationRelativeTo(null);
         userInfo.setLocationRelativeTo(null);
-        jDialog1.setLocationRelativeTo(null);
+        comments.setLocationRelativeTo(null);
         //Inicio
         Begin();
     }
@@ -92,7 +97,7 @@ public class BIK_Blog extends javax.swing.JFrame {
             infoUserNextButton.setEnabled(true);
             UserHere = UserNow.myPosts.get(0).id;
         } else {
-            System.out.println("mucho texto");
+            ErrorMessage.setText("Please enter a valid ID");
         }
         UserID.setText("");
 
@@ -108,6 +113,17 @@ public class BIK_Blog extends javax.swing.JFrame {
             }
         }
         return post;
+    }
+
+    public void BeginComments(Post p) {
+        String name = p.myComments.get(0).name;
+        String email = p.myComments.get(0).email;
+        String comment = p.myComments.get(0).comment;
+        commentsEditorPane.setText("<b>name: </b>" + name + "<br>" + "<b>email: </b>" + email + "<br><br>" + comment);
+        PostHereForComment = p.id;
+        CommentHereIndexArray = 0;
+        backCommentsButton.setEnabled(false);
+        nextCommentsButton.setEnabled(true);
     }
 
     /**
@@ -128,7 +144,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         infoUserBackButton = new javax.swing.JButton();
         infoUserNextButton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        commentsButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         infoUserPostEditorPane = new javax.swing.JEditorPane();
         jLabel10 = new javax.swing.JLabel();
@@ -136,15 +152,15 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jDialog1 = new javax.swing.JDialog();
+        comments = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
+        commentsEditorPane = new javax.swing.JEditorPane();
         jLabel19 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        backButton1 = new javax.swing.JButton();
-        nextButton1 = new javax.swing.JButton();
+        backCommentsButton = new javax.swing.JButton();
+        nextCommentsButton = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -160,7 +176,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        commentsButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         principalEditorPane = new javax.swing.JEditorPane();
         infoPostButton = new javax.swing.JButton();
@@ -230,24 +246,24 @@ public class BIK_Blog extends javax.swing.JFrame {
         });
         jPanel5.add(infoUserNextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 80, 60));
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/android-messages.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        commentsButton1.setBackground(new java.awt.Color(255, 255, 255));
+        commentsButton1.setForeground(new java.awt.Color(255, 255, 255));
+        commentsButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/android-messages.png"))); // NOI18N
+        commentsButton1.setBorder(null);
+        commentsButton1.setBorderPainted(false);
+        commentsButton1.setContentAreaFilled(false);
+        commentsButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        commentsButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                commentsButton1MouseClicked(evt);
             }
         });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        commentsButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                commentsButton1ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 40, 50));
+        jPanel5.add(commentsButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 40, 50));
 
         infoUserPostEditorPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
         infoUserPostEditorPane.setContentType("text/html"); // NOI18N
@@ -297,18 +313,20 @@ public class BIK_Blog extends javax.swing.JFrame {
 
         userInfo.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, -10, 770, 60));
 
-        jDialog1.setBackground(new java.awt.Color(255, 255, 255));
-        jDialog1.setMinimumSize(new java.awt.Dimension(1050, 500));
-        jDialog1.setUndecorated(true);
-        jDialog1.setResizable(false);
+        comments.setBackground(new java.awt.Color(255, 255, 255));
+        comments.setMinimumSize(new java.awt.Dimension(1050, 500));
+        comments.setUndecorated(true);
+        comments.setResizable(false);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setMinimumSize(new java.awt.Dimension(1050, 500));
         jPanel7.setPreferredSize(new java.awt.Dimension(1050, 500));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jEditorPane1.setFocusable(false);
-        jScrollPane4.setViewportView(jEditorPane1);
+        commentsEditorPane.setContentType("text/html"); // NOI18N
+        commentsEditorPane.setFont(new java.awt.Font("Maiandra GD", 0, 24)); // NOI18N
+        commentsEditorPane.setFocusable(false);
+        jScrollPane4.setViewportView(commentsEditorPane);
 
         jPanel7.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 670, 280));
 
@@ -336,33 +354,33 @@ public class BIK_Blog extends javax.swing.JFrame {
         });
         jPanel7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, -1, -1));
 
-        backButton1.setBackground(new java.awt.Color(255, 255, 255));
-        backButton1.setForeground(new java.awt.Color(255, 255, 255));
-        backButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
-        backButton1.setBorder(null);
-        backButton1.setBorderPainted(false);
-        backButton1.setContentAreaFilled(false);
-        backButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backButton1.addActionListener(new java.awt.event.ActionListener() {
+        backCommentsButton.setBackground(new java.awt.Color(255, 255, 255));
+        backCommentsButton.setForeground(new java.awt.Color(255, 255, 255));
+        backCommentsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
+        backCommentsButton.setBorder(null);
+        backCommentsButton.setBorderPainted(false);
+        backCommentsButton.setContentAreaFilled(false);
+        backCommentsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backCommentsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButton1ActionPerformed(evt);
+                backCommentsButtonActionPerformed(evt);
             }
         });
-        jPanel7.add(backButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 80, 60));
+        jPanel7.add(backCommentsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 80, 60));
 
-        nextButton1.setBackground(new java.awt.Color(255, 255, 255));
-        nextButton1.setForeground(new java.awt.Color(255, 255, 255));
-        nextButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/share.png"))); // NOI18N
-        nextButton1.setBorder(null);
-        nextButton1.setBorderPainted(false);
-        nextButton1.setContentAreaFilled(false);
-        nextButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        nextButton1.addActionListener(new java.awt.event.ActionListener() {
+        nextCommentsButton.setBackground(new java.awt.Color(255, 255, 255));
+        nextCommentsButton.setForeground(new java.awt.Color(255, 255, 255));
+        nextCommentsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/share.png"))); // NOI18N
+        nextCommentsButton.setBorder(null);
+        nextCommentsButton.setBorderPainted(false);
+        nextCommentsButton.setContentAreaFilled(false);
+        nextCommentsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nextCommentsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextButton1ActionPerformed(evt);
+                nextCommentsButtonActionPerformed(evt);
             }
         });
-        jPanel7.add(nextButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 260, 80, 60));
+        jPanel7.add(nextCommentsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 260, 80, 60));
 
         jLabel13.setBackground(new java.awt.Color(160, 194, 211));
         jLabel13.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
@@ -370,15 +388,15 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel13.setText("Bik Blog");
         jPanel7.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 60, 32));
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout commentsLayout = new javax.swing.GroupLayout(comments.getContentPane());
+        comments.getContentPane().setLayout(commentsLayout);
+        commentsLayout.setHorizontalGroup(
+            commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+        commentsLayout.setVerticalGroup(
+            commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commentsLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -473,7 +491,7 @@ public class BIK_Blog extends javax.swing.JFrame {
                 ErrorMessageKeyReleased(evt);
             }
         });
-        jPanel1.add(ErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 120, 40));
+        jPanel1.add(ErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 140, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 580));
 
@@ -515,24 +533,24 @@ public class BIK_Blog extends javax.swing.JFrame {
         });
         jPanel2.add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 80, 60));
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/android-messages.png"))); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        commentsButton.setBackground(new java.awt.Color(255, 255, 255));
+        commentsButton.setForeground(new java.awt.Color(255, 255, 255));
+        commentsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/android-messages.png"))); // NOI18N
+        commentsButton.setBorder(null);
+        commentsButton.setBorderPainted(false);
+        commentsButton.setContentAreaFilled(false);
+        commentsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        commentsButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                commentsButtonMouseClicked(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        commentsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                commentsButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 40, 50));
+        jPanel2.add(commentsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 40, 50));
 
         principalEditorPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
         principalEditorPane.setContentType("text/html"); // NOI18N
@@ -600,7 +618,7 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void commentsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
@@ -675,9 +693,9 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     }//GEN-LAST:event_infoUserNextButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void commentsButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentsButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_commentsButton1ActionPerformed
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         // TODO add your handling code here:
@@ -713,11 +731,14 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     }//GEN-LAST:event_infoPostButtonMouseClicked
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void commentsButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentsButton1MouseClicked
         // TODO add your handling code here:
         userInfo.setVisible(false);
-        jDialog1.setVisible(true);
-    }//GEN-LAST:event_jButton4MouseClicked
+        comments.setVisible(true);
+        Post post = SearchPost(UserHere);
+        BeginComments(post);
+        sw = false;
+    }//GEN-LAST:event_commentsButton1MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
@@ -725,18 +746,45 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        // TODO add your handling code here:
-        jDialog1.setVisible(false);
-        setVisible(true);
+      if(sw){
+        comments.setVisible(false);
+        setVisible(true);  
+      }else{
+        comments.setVisible(false);
+        userInfo.setVisible(true);
+      }
+        
     }//GEN-LAST:event_jLabel18MouseClicked
 
-    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_backButton1ActionPerformed
+    private void backCommentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backCommentsButtonActionPerformed
+        Post post = SearchPost(PostHereForComment);
+        Comment comment = post.back(CommentHereIndexArray);
+        CommentHereIndexArray--;
+        commentsEditorPane.setText("<b>name: </b>" + comment.name + "<br>" + "<b>email: </b>" + comment.email + "<br><br>" + comment.comment);
+        if(CommentHereIndexArray < post.myComments.size()-1){
+            nextCommentsButton.setEnabled(true);
+        }
+        if(CommentHereIndexArray == 0){
+            backCommentsButton.setEnabled(false);
+        }
 
-    private void nextButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nextButton1ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_backCommentsButtonActionPerformed
+
+    private void nextCommentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextCommentsButtonActionPerformed
+        Post post = SearchPost(PostHereForComment);
+        Comment comment = post.next(CommentHereIndexArray);
+        CommentHereIndexArray++;
+        commentsEditorPane.setText("<b>name: </b>" + comment.name + "<br>" + "<b>email: </b>" + comment.email + "<br><br>" + comment.comment);
+        if(CommentHereIndexArray == post.myComments.size()-1){
+            nextCommentsButton.setEnabled(false);
+        }
+        if(CommentHereIndexArray > 0){
+            backCommentsButton.setEnabled(true);
+        }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_nextCommentsButtonActionPerformed
 
     private void ErrorMessageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ErrorMessageMouseClicked
         // TODO add your handling code here:
@@ -750,11 +798,15 @@ public class BIK_Blog extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ErrorMessageKeyReleased
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void commentsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentsButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        jDialog1.setVisible(true);
-    }//GEN-LAST:event_jButton3MouseClicked
+        comments.setVisible(true);
+        Post post = SearchPost(PrincipalHere);
+        BeginComments(post);
+        sw = true;
+
+    }//GEN-LAST:event_commentsButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -798,16 +850,16 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JTextField ErrorMessage;
     private javax.swing.JTextField UserID;
     private javax.swing.JButton backButton;
-    private javax.swing.JButton backButton1;
+    private javax.swing.JButton backCommentsButton;
+    private javax.swing.JDialog comments;
+    private javax.swing.JButton commentsButton;
+    private javax.swing.JButton commentsButton1;
+    private javax.swing.JEditorPane commentsEditorPane;
     private javax.swing.JButton infoPostButton;
     private javax.swing.JButton infoUserBackButton;
     private javax.swing.JEditorPane infoUserEditorPane;
     private javax.swing.JButton infoUserNextButton;
     private javax.swing.JEditorPane infoUserPostEditorPane;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -839,7 +891,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton nextButton;
-    private javax.swing.JButton nextButton1;
+    private javax.swing.JButton nextCommentsButton;
     private javax.swing.JEditorPane principalEditorPane;
     private javax.swing.JFrame userInfo;
     // End of variables declaration//GEN-END:variables
