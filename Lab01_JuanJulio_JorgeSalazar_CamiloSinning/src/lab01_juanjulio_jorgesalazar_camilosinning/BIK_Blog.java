@@ -1,7 +1,7 @@
 package lab01_juanjulio_jorgesalazar_camilosinning;
 
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+
 
 public class BIK_Blog extends javax.swing.JFrame {
 
