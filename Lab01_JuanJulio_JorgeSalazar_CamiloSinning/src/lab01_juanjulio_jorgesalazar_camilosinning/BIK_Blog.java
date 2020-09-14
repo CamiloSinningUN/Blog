@@ -2,7 +2,6 @@ package lab01_juanjulio_jorgesalazar_camilosinning;
 
 import java.awt.event.KeyEvent;
 
-
 public class BIK_Blog extends javax.swing.JFrame {
 
     Blog Raiz = new Blog();
