@@ -1,6 +1,7 @@
 package lab01_juanjulio_jorgesalazar_camilosinning;
 
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class BIK_Blog extends javax.swing.JFrame {
 
@@ -19,6 +20,8 @@ public class BIK_Blog extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         userInfo.setLocationRelativeTo(null);
         comments.setLocationRelativeTo(null);
+        setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage()); 
+        userInfo.setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage()); 
         //Inicio
         Begin();
     }
