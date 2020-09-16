@@ -477,11 +477,9 @@ public class BIK_Blog extends javax.swing.JFrame {
         ErrorMessage.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         ErrorMessage.setForeground(new java.awt.Color(255, 99, 71));
         ErrorMessage.setBorder(null);
-        ErrorMessage.setCaretColor(new java.awt.Color(255, 255, 255));
         ErrorMessage.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         ErrorMessage.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         ErrorMessage.setEnabled(false);
-        ErrorMessage.setFocusable(false);
         ErrorMessage.setOpaque(false);
         ErrorMessage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
