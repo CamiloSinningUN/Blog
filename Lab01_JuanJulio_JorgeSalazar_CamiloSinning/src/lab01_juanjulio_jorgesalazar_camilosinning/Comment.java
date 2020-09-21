@@ -16,6 +16,9 @@ public class Comment {
     String name;
     String email;
     
+    //hermanos de Comment
+    Comment Link;
+    
 
     public Comment(String comment, int postId,int id, String name, String email) {
         this.comment = comment;

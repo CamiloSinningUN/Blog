@@ -14,32 +14,47 @@ import javax.swing.JEditorPane;
  * @author camil
  */
 public class Blog {
-    String name;
-    ArrayList<User> myUsers;
 
-    public Blog() {      
-        myUsers = new ArrayList<>();
-        
-    }
-    
-    public int next(int Here, JEditorPane principalEditorPane){
-         for (User user : myUsers) {
-             Here = user.next(Here, principalEditorPane);           
+    String name;
+    User UserPTR;
+
+    public void InsertUser(User user) {
+        User u = UserPTR;
+        if (UserPTR == null) {
+            UserPTR = user;
+        } else {
+
+            while (u.Link != null) {
+                u = u.Link;
+            }
+            u.Link = user;
         }
-        return Here; 
     }
-    public int back(int Here, JEditorPane principalEditorPane){
-        for (User user : myUsers) {
-            Here = user.back(Here, principalEditorPane);           
+
+    public int next(int Here, JEditorPane principalEditorPane) {
+
+        User u = UserPTR;
+        while (u != null) {
+
+            Here = u.next(Here, principalEditorPane);
+            u = u.Link;
         }
         return Here;
     }
-    public User SearchUser(int id){
-        User u = null;
-        for (User user : myUsers) {
-            if(user.id==id){
-                u=user;
-            }
+
+    public int back(int Here, JEditorPane principalEditorPane){       
+        User u = UserPTR;
+         while (u != null) {
+            Here = u.back(Here, principalEditorPane);           
+            u = u.Link;
+        }
+        return Here;
+    }
+
+    public User SearchUser(int id) {
+        User u = UserPTR;
+        while ( (u != null )&& (u.id != id) ) {
+            u = u.Link;
         }
         return u;
     }
