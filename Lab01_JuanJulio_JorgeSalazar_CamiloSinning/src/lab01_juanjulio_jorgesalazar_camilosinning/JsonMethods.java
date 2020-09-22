@@ -15,53 +15,7 @@ import java.io.IOException;
  * @author camil
  */
 public class JsonMethods {
-
-    //Metodo de prueba en consola (Inicio)
-    public static void ShowPosts() {
-
-        File f = new File("Posts.json");
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(f));
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                System.out.println(linea);
-            }
-
-        } catch (IOException e) {
-            System.out.println("Error");
-        }
-
-    }
-
-    public static void ShowUsers() {
-        File f = new File("Users.json");
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(f));
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                System.out.println(linea);
-            }
-
-        } catch (IOException e) {
-            System.out.println("Error");
-        }
-    }
-
-    public static void ShowComments() {
-        File f = new File("Comments.json");
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(f));
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                System.out.println(linea);
-            }
-
-        } catch (IOException e) {
-            System.out.println("Error");
-        }
-    }
-    //(Fin)
-
+   
     //Calcular maximo de cada cosa
     //maximos numero post de un usuario
     //maximo numero de comentarios en cada post

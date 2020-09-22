@@ -11,7 +11,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     int PostHereForComment;
     int CommentHereIndexArray;
     User UserNow;
-    
+
     //true si salio de principal, false si salio de user
     boolean sw;
 
@@ -20,10 +20,11 @@ public class BIK_Blog extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         userInfo.setLocationRelativeTo(null);
         comments.setLocationRelativeTo(null);
-        setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage()); 
-        userInfo.setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage()); 
+        /*setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage()); 
+        userInfo.setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage());*/
         //Inicio
         Begin();
+
     }
 
     public void Begin() {
@@ -41,22 +42,22 @@ public class BIK_Blog extends javax.swing.JFrame {
             for (String post : posts) {
                 Post p = JsonMethods.StringToPost(post);
                 if (p.userId == u.id) {
-                    u.myPosts.add(p);
+                    u.InsertPost(p);
                 }
                 //agregar comments a post
                 for (String comment : comments) {
                     Comment c = JsonMethods.StringToComment(comment);
                     if (c.postId == p.id) {
-                        p.myComments.add(c);
+                        p.InsertComment(c);
                     }
                 }
             }
-            Raiz.myUsers.add(u);
+            Raiz.InsertUser(u);
         }
 
-        //poner post inicial
-        String title = Raiz.myUsers.get(0).myPosts.get(0).title;
-        String post = Raiz.myUsers.get(0).myPosts.get(0).post;
+        //poner post inicial        
+        String title = Raiz.UserPTR.PostPTR.title;
+        String post = Raiz.UserPTR.PostPTR.post;
         principalEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + post);
         PrincipalHere = 1;
 
@@ -90,14 +91,15 @@ public class BIK_Blog extends javax.swing.JFrame {
                     + "<b>&nbsp;catchPhrase: </b>" + UserNow.company.catchPhrase + "<br>"
                     + "<b>&nbsp;bs: </b>" + UserNow.company.bs + "<br>");
 
-            String title = UserNow.myPosts.get(0).title;
-            String post = UserNow.myPosts.get(0).post;
+            String title = UserNow.PostPTR.title;
+            String post = UserNow.PostPTR.post;
+
             infoUserPostEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + post);
 
             //no hay nodo anterior
             infoUserBackButton.setEnabled(false);
             infoUserNextButton.setEnabled(true);
-            UserHere = UserNow.myPosts.get(0).id;
+            UserHere = UserNow.PostPTR.id;
         } else {
             ErrorMessage.setText("Please enter a valid ID");
         }
@@ -106,21 +108,28 @@ public class BIK_Blog extends javax.swing.JFrame {
     }
 
     public Post SearchPost(int id) {
-        Post post = null;
-        for (User u : Raiz.myUsers) {
-            for (Post p : u.myPosts) {
+        User u = Raiz.UserPTR;
+        while (u != null) {
+            Post p = u.PostPTR;
+            while (p != null) {
+
                 if (p.id == id) {
-                    post = p;
+
+                    return p;
+
                 }
+                p = p.Link;
             }
+
+            u = u.Link;
         }
-        return post;
+        return null;
     }
 
     public void BeginComments(Post p) {
-        String name = p.myComments.get(0).name;
-        String email = p.myComments.get(0).email;
-        String comment = p.myComments.get(0).comment;
+        String name = p.CommentPTR.name;
+        String email = p.CommentPTR.email;
+        String comment = p.CommentPTR.comment;
         commentsEditorPane.setText("<b>name: </b>" + name + "<br>" + "<b>email: </b>" + email + "<br><br>" + comment);
         PostHereForComment = p.id;
         CommentHereIndexArray = 0;
@@ -166,7 +175,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         UserID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -416,9 +424,6 @@ public class BIK_Blog extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/account-circle.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 34, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/0 (1) (1).png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 402, -1, -1));
 
         jSeparator1.setAutoscrolls(true);
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 260, 180, 10));
@@ -674,10 +679,10 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void infoUserBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoUserBackButtonActionPerformed
         UserHere = UserNow.back(UserHere, infoUserPostEditorPane);
-        if (UserHere == UserNow.myPosts.get(0).id) {
+        if (UserHere == UserNow.PostPTR.id) {
             infoUserBackButton.setEnabled(false);
         }
-        if (UserHere < UserNow.myPosts.size() + UserNow.myPosts.get(0).id - 1) {
+        if (UserHere < UserNow.PostsSize() + UserNow.PostPTR.id - 1) {
             infoUserNextButton.setEnabled(true);
         }
 
@@ -685,11 +690,11 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void infoUserNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoUserNextButtonActionPerformed
         UserHere = UserNow.next(UserHere, infoUserPostEditorPane);
-        if (UserHere > UserNow.myPosts.get(0).id) {
+        if (UserHere > UserNow.PostPTR.id) {
             infoUserBackButton.setEnabled(true);
         }
 
-        if (UserHere >= UserNow.myPosts.size() + UserNow.myPosts.get(0).id - 1) {
+        if (UserHere >= UserNow.PostsSize() + UserNow.PostPTR.id - 1) {
             infoUserNextButton.setEnabled(false);
         }
 
@@ -709,6 +714,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         // TODO add your handling code here:
         userInfo.setVisible(false);
         setVisible(true);
+        ErrorMessage.setText("");
     }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
@@ -749,14 +755,14 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-      if(sw){
-        comments.setVisible(false);
-        setVisible(true);  
-      }else{
-        comments.setVisible(false);
-        userInfo.setVisible(true);
-      }
-        
+        if (sw) {
+            comments.setVisible(false);
+            setVisible(true);
+        } else {
+            comments.setVisible(false);
+            userInfo.setVisible(true);
+        }
+
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void backCommentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backCommentsButtonActionPerformed
@@ -764,10 +770,10 @@ public class BIK_Blog extends javax.swing.JFrame {
         Comment comment = post.back(CommentHereIndexArray);
         CommentHereIndexArray--;
         commentsEditorPane.setText("<b>name: </b>" + comment.name + "<br>" + "<b>email: </b>" + comment.email + "<br><br>" + comment.comment);
-        if(CommentHereIndexArray < post.myComments.size()-1){
+        if (CommentHereIndexArray < post.CommentsSize() - 1) {
             nextCommentsButton.setEnabled(true);
         }
-        if(CommentHereIndexArray == 0){
+        if (CommentHereIndexArray == 0) {
             backCommentsButton.setEnabled(false);
         }
 
@@ -779,10 +785,10 @@ public class BIK_Blog extends javax.swing.JFrame {
         Comment comment = post.next(CommentHereIndexArray);
         CommentHereIndexArray++;
         commentsEditorPane.setText("<b>name: </b>" + comment.name + "<br>" + "<b>email: </b>" + comment.email + "<br><br>" + comment.comment);
-        if(CommentHereIndexArray == post.myComments.size()-1){
+        if (CommentHereIndexArray == post.CommentsSize() - 1) {
             nextCommentsButton.setEnabled(false);
         }
-        if(CommentHereIndexArray > 0){
+        if (CommentHereIndexArray > 0) {
             backCommentsButton.setEnabled(true);
         }
 
@@ -806,6 +812,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         this.setVisible(false);
         comments.setVisible(true);
         Post post = SearchPost(PrincipalHere);
+        System.out.println(post.id);
         BeginComments(post);
         sw = true;
 
@@ -873,7 +880,6 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
