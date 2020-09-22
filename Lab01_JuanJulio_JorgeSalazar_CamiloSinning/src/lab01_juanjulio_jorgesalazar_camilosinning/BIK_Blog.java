@@ -338,7 +338,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel19.setText("Comments");
         jPanel7.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 300, 100));
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home.png"))); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/image.png"))); // NOI18N
         jLabel18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -474,6 +474,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         });
         jPanel1.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 40, 50));
 
+        ErrorMessage.setEditable(false);
         ErrorMessage.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         ErrorMessage.setForeground(new java.awt.Color(255, 99, 71));
         ErrorMessage.setBorder(null);
