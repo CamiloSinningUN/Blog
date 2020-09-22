@@ -58,4 +58,14 @@ public class Blog {
         }
         return u;
     }
+    
+    public User SearchName(String name){
+        User u = UserPTR;
+        while( (u != null )&& !(u.name.toLowerCase().contains(name.toLowerCase())) ){
+            u=u.Link;
+        }
+        return u;
+    }
+    
+   
 }
