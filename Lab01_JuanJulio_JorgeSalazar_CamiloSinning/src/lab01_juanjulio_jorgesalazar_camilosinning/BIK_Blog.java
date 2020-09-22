@@ -67,9 +67,9 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     }
 
-    public void BeginUser(int id) {
+    public void BeginUser(User u) {
 
-        UserNow = Raiz.SearchUser(id);
+        UserNow = u;
         if (UserNow != null) {
             this.setVisible(false);
             userInfo.setVisible(true);
@@ -101,7 +101,7 @@ public class BIK_Blog extends javax.swing.JFrame {
             infoUserNextButton.setEnabled(true);
             UserHere = UserNow.PostPTR.id;
         } else {
-            ErrorMessage.setText("Please enter a valid ID");
+            ErrorMessage.setText("Please enter a valid ID/Name");
         }
         UserID.setText("");
 
@@ -466,7 +466,7 @@ public class BIK_Blog extends javax.swing.JFrame {
 
         UserID.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         UserID.setForeground(new java.awt.Color(153, 153, 153));
-        UserID.setText("Enter ID");
+        UserID.setText("Enter ID/Name");
         UserID.setBorder(null);
         UserID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         UserID.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -498,7 +498,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(160, 194, 211));
         jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(160, 194, 211));
-        jLabel6.setText("UserID:");
+        jLabel6.setText("Search:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 210, 70, 32));
 
         Buscar.setBackground(new java.awt.Color(255, 255, 255));
@@ -535,7 +535,7 @@ public class BIK_Blog extends javax.swing.JFrame {
                 ErrorMessageKeyReleased(evt);
             }
         });
-        jPanel1.add(ErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 140, 40));
+        jPanel1.add(ErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 190, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 580));
 
@@ -686,9 +686,10 @@ public class BIK_Blog extends javax.swing.JFrame {
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         String id = UserID.getText();
         try {
-            BeginUser(Integer.parseInt(id));
+            BeginUser(Raiz.SearchUser(Integer.parseInt(id)));
         } catch (NumberFormatException e) {
-            ErrorMessage.setText("Please enter a valid ID");
+            BeginUser(Raiz.SearchName(id));
+            ErrorMessage.setText("Please enter a valid ID/Name");
         }
 
     }//GEN-LAST:event_BuscarActionPerformed
@@ -766,7 +767,7 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void infoPostButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoPostButtonMouseClicked
         Post post = SearchPost(PrincipalHere);
-        BeginUser(post.userId);
+        BeginUser(Raiz.SearchUser(post.userId));
         String title = post.title;
         String info = post.post;
         infoUserPostEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + info);
