@@ -132,15 +132,31 @@ public class BIK_Blog extends javax.swing.JFrame {
     }
 
     public void BeginComments(Post p) {
-        String name = p.CommentPTR.name;
-        String email = p.CommentPTR.email;
-        String comment = p.CommentPTR.comment;
-        commentsEditorPane.setText("<b>name: </b>" + name + "<br>" + "<b>email: </b>" + email + "<br><br>" + comment);
-        PostHereForComment = p.id;
-        CommentHereIndexArray = 0;
+
+        Comment c = p.CommentPTR;
+        String temp = "";
+        while (c != null) {           
+            String name = c.name;
+            String email = c.email;
+            String comment = c.comment;
+            
+            commentsEditorPane.setText(temp
+                    + "<b>name: </b>" + name + "<br>"                    
+                    + "<b>email: </b>" + email + "<br><br>"
+                    + comment );
+              
+            temp = temp + "<b>name: </b>" + name + "<br>" + "<b>email: </b>" + email + "<br><br>" + comment + "<br><br><hr>";
+            c = c.Link;
+            
+        }
+
+         PostHereForComment = p.id;
+         commentsEditorPane.setCaretPosition(0);
+        //CommentHereIndexArray = 0;
         //backCommentsButton.setEnabled(false);
         //nextCommentsButton.setEnabled(true);
     }
+
     
     public void DrawUser(Graphics g){
         
@@ -160,6 +176,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         g.drawLine(20, 20,  110,110);
         //circulo.drawOval(30, 500, (int) diametro, (int) diametro);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -365,7 +382,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         jScrollPane4.setRequestFocusEnabled(false);
 
         commentsEditorPane.setContentType("text/html"); // NOI18N
-        commentsEditorPane.setFont(new java.awt.Font("Maiandra GD", 0, 24)); // NOI18N
+        commentsEditorPane.setFont(new java.awt.Font("Maiandra GD", 0, 22)); // NOI18N
         commentsEditorPane.setFocusable(false);
         jScrollPane4.setViewportView(commentsEditorPane);
 
@@ -855,12 +872,13 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void commentsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentsButtonMouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
+        this.setVisible(false);     
         comments.setVisible(true);
         Post post = SearchPost(PrincipalHere);
         System.out.println(post.id);
         BeginComments(post);
         sw = true;
+        
 
     }//GEN-LAST:event_commentsButtonMouseClicked
 
