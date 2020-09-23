@@ -1,5 +1,9 @@
 package lab01_juanjulio_jorgesalazar_camilosinning;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 //import javax.swing.ImageIcon;
 
@@ -20,6 +24,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         userInfo.setLocationRelativeTo(null);
         comments.setLocationRelativeTo(null);
+        Arbol.setLocationRelativeTo(null);
         /*setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage()); 
         userInfo.setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage());*/
         //Inicio
@@ -137,7 +142,24 @@ public class BIK_Blog extends javax.swing.JFrame {
         //nextCommentsButton.setEnabled(true);
     }
     
-    
+    public void DrawUser(Graphics g){
+        
+        double radio, diametro;
+        //Arbol.paint(g);
+        
+        //Graphics2D circulo = (Graphics2D)g;
+        //circulo.setStroke(new BasicStroke(5.f));
+        //circulo.setPaint(Color.DARK_GRAY);
+        radio = 1050/10/2;
+        diametro = radio*2;
+        //g.setStroke(new BasicStroke(5.f));
+        g.setColor(Color.black);
+        g.drawOval(280, 20, 100, 100);
+        System.out.println("JE");
+        g.setColor(Color.red);
+        g.drawLine(20, 20,  110,110);
+        //circulo.drawOval(30, 500, (int) diametro, (int) diametro);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -174,12 +196,10 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         Arbol = new javax.swing.JFrame();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
+        tablero = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -189,6 +209,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         Buscar = new javax.swing.JButton();
         ErrorMessage = new javax.swing.JTextField();
+        VistaArbol = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
@@ -238,7 +259,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         infoUserBackButton.setBackground(new java.awt.Color(255, 255, 255));
         infoUserBackButton.setForeground(new java.awt.Color(255, 255, 255));
         infoUserBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
-        infoUserBackButton.setBorder(null);
         infoUserBackButton.setBorderPainted(false);
         infoUserBackButton.setContentAreaFilled(false);
         infoUserBackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -252,7 +272,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         infoUserNextButton.setBackground(new java.awt.Color(255, 255, 255));
         infoUserNextButton.setForeground(new java.awt.Color(255, 255, 255));
         infoUserNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/share.png"))); // NOI18N
-        infoUserNextButton.setBorder(null);
         infoUserNextButton.setBorderPainted(false);
         infoUserNextButton.setContentAreaFilled(false);
         infoUserNextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -266,7 +285,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         commentsButton1.setBackground(new java.awt.Color(255, 255, 255));
         commentsButton1.setForeground(new java.awt.Color(255, 255, 255));
         commentsButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/android-messages.png"))); // NOI18N
-        commentsButton1.setBorder(null);
         commentsButton1.setBorderPainted(false);
         commentsButton1.setContentAreaFilled(false);
         commentsButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -402,39 +420,18 @@ public class BIK_Blog extends javax.swing.JFrame {
         Arbol.setSize(new java.awt.Dimension(1060, 580));
         Arbol.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        javax.swing.GroupLayout tableroLayout = new javax.swing.GroupLayout(tablero);
+        tablero.setLayout(tableroLayout);
+        tableroLayout.setHorizontalGroup(
+            tableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 910, Short.MAX_VALUE)
+        );
+        tableroLayout.setVerticalGroup(
+            tableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+        );
 
-        jLabel21.setBackground(new java.awt.Color(160, 194, 211));
-        jLabel21.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(160, 194, 211));
-        jLabel21.setText("Bik Blog");
-        jPanel9.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 60, 32));
-
-        Arbol.getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1060, 530));
-
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Multiply_32px.png"))); // NOI18N
-        jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
-            }
-        });
-        jPanel10.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, -1, -1));
-
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/image.png"))); // NOI18N
-        jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel23MouseClicked(evt);
-            }
-        });
-        jPanel10.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, -1, -1));
+        Arbol.getContentPane().add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 910, 390));
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Expand_Arrow_32px.png"))); // NOI18N
         jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -443,9 +440,25 @@ public class BIK_Blog extends javax.swing.JFrame {
                 jLabel24MouseClicked(evt);
             }
         });
-        jPanel10.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, -1, -1));
+        Arbol.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, -1, -1));
 
-        Arbol.getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1060, 60));
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Multiply_32px.png"))); // NOI18N
+        jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+        });
+        Arbol.getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, -1, -1));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/image.png"))); // NOI18N
+        jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+        });
+        Arbol.getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -467,7 +480,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         UserID.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         UserID.setForeground(new java.awt.Color(153, 153, 153));
         UserID.setText("Enter ID/Name");
-        UserID.setBorder(null);
         UserID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         UserID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -504,13 +516,22 @@ public class BIK_Blog extends javax.swing.JFrame {
         Buscar.setBackground(new java.awt.Color(255, 255, 255));
         Buscar.setForeground(new java.awt.Color(255, 255, 255));
         Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/magnify.png"))); // NOI18N
-        Buscar.setBorder(null);
         Buscar.setBorderPainted(false);
         Buscar.setContentAreaFilled(false);
         Buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BuscarMouseClicked(evt);
+            }
+        });
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarActionPerformed(evt);
+            }
+        });
+        Buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BuscarKeyPressed(evt);
             }
         });
         jPanel1.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 40, 50));
@@ -518,7 +539,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         ErrorMessage.setEditable(false);
         ErrorMessage.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         ErrorMessage.setForeground(new java.awt.Color(255, 99, 71));
-        ErrorMessage.setBorder(null);
         ErrorMessage.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         ErrorMessage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -537,6 +557,29 @@ public class BIK_Blog extends javax.swing.JFrame {
         });
         jPanel1.add(ErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 190, 40));
 
+        VistaArbol.setBackground(new java.awt.Color(255, 255, 255));
+        VistaArbol.setForeground(new java.awt.Color(255, 255, 255));
+        VistaArbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/family-tree.png"))); // NOI18N
+        VistaArbol.setBorderPainted(false);
+        VistaArbol.setContentAreaFilled(false);
+        VistaArbol.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        VistaArbol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VistaArbolMouseClicked(evt);
+            }
+        });
+        VistaArbol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VistaArbolActionPerformed(evt);
+            }
+        });
+        VistaArbol.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                VistaArbolKeyPressed(evt);
+            }
+        });
+        jPanel1.add(VistaArbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 40, 40));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 580));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -552,7 +595,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         backButton.setBackground(new java.awt.Color(255, 255, 255));
         backButton.setForeground(new java.awt.Color(255, 255, 255));
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
-        backButton.setBorder(null);
         backButton.setBorderPainted(false);
         backButton.setContentAreaFilled(false);
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -566,7 +608,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         nextButton.setBackground(new java.awt.Color(255, 255, 255));
         nextButton.setForeground(new java.awt.Color(255, 255, 255));
         nextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/share.png"))); // NOI18N
-        nextButton.setBorder(null);
         nextButton.setBorderPainted(false);
         nextButton.setContentAreaFilled(false);
         nextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -580,7 +621,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         commentsButton.setBackground(new java.awt.Color(255, 255, 255));
         commentsButton.setForeground(new java.awt.Color(255, 255, 255));
         commentsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/android-messages.png"))); // NOI18N
-        commentsButton.setBorder(null);
         commentsButton.setBorderPainted(false);
         commentsButton.setContentAreaFilled(false);
         commentsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -606,7 +646,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         infoPostButton.setBackground(new java.awt.Color(255, 255, 255));
         infoPostButton.setForeground(new java.awt.Color(255, 255, 255));
         infoPostButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/account-question (1).png"))); // NOI18N
-        infoPostButton.setBorder(null);
         infoPostButton.setBorderPainted(false);
         infoPostButton.setContentAreaFilled(false);
         infoPostButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -837,6 +876,30 @@ public class BIK_Blog extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel24MouseClicked
 
+    private void VistaArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VistaArbolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VistaArbolActionPerformed
+
+    private void BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscarMouseClicked
+
+    private void BuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscarKeyPressed
+
+    private void VistaArbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VistaArbolMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Arbol.setVisible(true);
+        Graphics g = Arbol.getGraphics();
+        DrawUser(g);
+    }//GEN-LAST:event_VistaArbolMouseClicked
+
+    private void VistaArbolKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VistaArbolKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VistaArbolKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -879,6 +942,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JButton Buscar;
     private javax.swing.JTextField ErrorMessage;
     private javax.swing.JTextField UserID;
+    private javax.swing.JButton VistaArbol;
     private javax.swing.JButton backButton;
     private javax.swing.JDialog comments;
     private javax.swing.JButton commentsButton;
@@ -899,7 +963,6 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -911,14 +974,12 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -926,6 +987,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton nextButton;
     private javax.swing.JEditorPane principalEditorPane;
+    private javax.swing.JPanel tablero;
     private javax.swing.JFrame userInfo;
     // End of variables declaration//GEN-END:variables
 }
