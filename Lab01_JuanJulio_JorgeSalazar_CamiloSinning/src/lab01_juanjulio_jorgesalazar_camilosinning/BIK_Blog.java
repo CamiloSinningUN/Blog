@@ -15,7 +15,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     int PostHereForComment;
     int CommentHereIndexArray;
     User UserNow;
-    int posiciones[] = new int[10];
+    int user;
 
     //true si salio de principal, false si salio de user
     boolean sw;
@@ -161,6 +161,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     public void DrawUser(Graphics g) {
         double diametro;
         int i = 1, x = 50, y = 400;
+
         diametro = 1050 / 10 / 2;
         g.setColor(Color.black);
         g.drawOval(505, 180, (int) diametro, (int) diametro);
@@ -168,7 +169,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         while (i <= 10) {
             g.setColor(Color.black);
             g.drawOval(x, y, (int) diametro, (int) diametro);
-            posiciones[i - 1] = x + 250;
             g.setColor(Color.red);
             g.drawLine(531, 231, x + 25, y);
             g.setColor(Color.gray);
@@ -179,10 +179,16 @@ public class BIK_Blog extends javax.swing.JFrame {
     }
 
     public void DrawPost(Graphics g, int j) {
+        user = j;
         double diametro;
         int i = 1, x = 50, y = 400;
 
         diametro = 1050 / 10 / 2;
+        g.setColor(Color.black);
+        g.drawOval(600, 100, (int) diametro, (int) diametro);
+        g.drawString("BikBlog", 605, 130);
+        g.setColor(Color.red);
+        g.drawLine(606, 141, 555, 198);
         g.setColor(Color.black);
         g.drawOval(505, 180, (int) diametro, (int) diametro);
         g.drawString("User #" + j, 509, 210);
@@ -193,9 +199,36 @@ public class BIK_Blog extends javax.swing.JFrame {
             g.drawLine(531, 231, x + 25, y);
             g.setColor(Color.gray);
             g.drawString("Post #" + i, x + 4, y + 30);
-            //System.out.println(p.x + "," + p.y);
             i++;
             x = x + 100;
+        }
+    }
+
+    public void DrawComment(Graphics g, int j, int hijos) {
+        int i = 1, x = 50, y = 400;
+
+        g.setColor(Color.black);
+        g.drawOval(505, 50, 50, 50);
+        g.drawString("BikBlog", 509, 80);
+        g.setColor(Color.red);
+        g.drawLine(556, 77, 605, 109);
+        g.setColor(Color.black);
+        g.drawOval(600, 100, 50, 50);
+        g.drawString("User #" + user, 605, 130);
+        g.setColor(Color.red);
+        g.drawLine(606, 141, 555, 198);
+        g.setColor(Color.black);
+        g.drawOval(505, 180, 50, 50);
+        g.drawString("Post #" + j, 509, 210);
+        while (i <= hijos) {
+            g.setColor(Color.black);
+            g.drawOval(x, y, 50, 50);
+            g.setColor(Color.red);
+            g.drawLine(531, 231, x + 25, y);
+            g.setColor(Color.gray);
+            g.drawString("Cmt #" + i, x + 4, y + 30);
+            i++;
+            x = x + 1050 / hijos / 2 + 100;
         }
     }
 
@@ -240,6 +273,9 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         Graficar = new javax.swing.JButton();
         Graficar1 = new javax.swing.JButton();
+        Display = new javax.swing.JTextField();
+        Buscar2 = new javax.swing.JButton();
+        Buscar3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -537,6 +573,51 @@ public class BIK_Blog extends javax.swing.JFrame {
             }
         });
         tablero.add(Graficar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 180, 50));
+        tablero.add(Display, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 539, 170, 30));
+
+        Buscar2.setBackground(new java.awt.Color(255, 255, 255));
+        Buscar2.setText("User");
+        Buscar2.setBorderPainted(false);
+        Buscar2.setContentAreaFilled(false);
+        Buscar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Buscar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Buscar2MouseClicked(evt);
+            }
+        });
+        Buscar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Buscar2ActionPerformed(evt);
+            }
+        });
+        Buscar2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Buscar2KeyPressed(evt);
+            }
+        });
+        tablero.add(Buscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 180, 30));
+
+        Buscar3.setBackground(new java.awt.Color(255, 255, 255));
+        Buscar3.setText("Post");
+        Buscar3.setBorderPainted(false);
+        Buscar3.setContentAreaFilled(false);
+        Buscar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Buscar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Buscar3MouseClicked(evt);
+            }
+        });
+        Buscar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Buscar3ActionPerformed(evt);
+            }
+        });
+        Buscar3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Buscar3KeyPressed(evt);
+            }
+        });
+        tablero.add(Buscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 180, 30));
 
         Arbol.getContentPane().add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 580));
 
@@ -968,19 +1049,8 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void tableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableroMouseClicked
         // TODO add your handling code here:
-        int j = 1;
         Point p = MouseInfo.getPointerInfo().getLocation();
         System.out.println(p.x + "," + p.y);
-        while (j <= 10) {
-            if (p.x >= posiciones[j - 1] - 25 && p.x <= posiciones[j - 1] + 25) {
-                Graphics g = tablero.getGraphics();
-                g.clearRect(50, 50, 1000, 1000);
-                g.setColor(Color.white);
-                g.fillRect(50, 50, 1000, 1000);
-                DrawPost(g, j);
-            }
-            j++;
-        }
     }//GEN-LAST:event_tableroMouseClicked
 
     private void Graficar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Graficar1MouseClicked
@@ -1023,6 +1093,44 @@ public class BIK_Blog extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_GraficarMouseClicked
 
+    private void Buscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Buscar2MouseClicked
+
+    private void Buscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar2ActionPerformed
+        // TODO add your handling code here:
+        Graphics g = tablero.getGraphics();
+        g.clearRect(50, 50, 1000, 1000);
+        g.setColor(Color.white);
+        g.fillRect(50, 50, 1000, 1000);
+        DrawPost(g, Integer.parseInt(Display.getText()));
+
+    }//GEN-LAST:event_Buscar2ActionPerformed
+
+    private void Buscar2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Buscar2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Buscar2KeyPressed
+
+    private void Buscar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar3MouseClicked
+        // TODO add your handling code here:
+        int hijos;
+        Graphics g = tablero.getGraphics();
+        g.clearRect(50, 50, 1000, 1000);
+        g.setColor(Color.white);
+        g.fillRect(50, 50, 1000, 1000);
+        hijos = Raiz.SearchUser(2).PostPTR.CommentsSize();
+        DrawComment(g, Integer.parseInt(Display.getText()), hijos);
+    }//GEN-LAST:event_Buscar3MouseClicked
+
+    private void Buscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar3ActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_Buscar3ActionPerformed
+
+    private void Buscar3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Buscar3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Buscar3KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1063,6 +1171,9 @@ public class BIK_Blog extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame Arbol;
     private javax.swing.JButton Buscar;
+    private javax.swing.JButton Buscar2;
+    private javax.swing.JButton Buscar3;
+    private javax.swing.JTextField Display;
     private javax.swing.JTextField ErrorMessage;
     private javax.swing.JButton Graficar;
     private javax.swing.JButton Graficar1;
