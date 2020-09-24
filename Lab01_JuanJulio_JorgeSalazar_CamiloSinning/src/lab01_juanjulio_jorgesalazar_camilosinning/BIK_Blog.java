@@ -988,10 +988,17 @@ public class BIK_Blog extends javax.swing.JFrame {
     private void Graficar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Graficar1ActionPerformed
         // TODO add your handling code here:
         
-        tablero.removeAll();
-        tablero.repaint();
-             
+        //tablero.removeAll();       
+        //tablero.repaint();
+        
         Graphics g = tablero.getGraphics();
+        g.clearRect(50, 50, 1000, 1000);
+        g.setColor(Color.white);
+        g.fillRect(50, 50, 1000, 1000);
+       
+        
+       
+        
         DrawPost(g, 5);
 
     }//GEN-LAST:event_Graficar1ActionPerformed
@@ -1020,7 +1027,11 @@ public class BIK_Blog extends javax.swing.JFrame {
         // TODO add your handling code here:
         Graphics g = tablero.getGraphics();
         Graficar.setVisible(false);
+        
+        
         DrawUser(g);
+        
+        
     }//GEN-LAST:event_GraficarActionPerformed
 
     private void GraficarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GraficarMouseClicked
