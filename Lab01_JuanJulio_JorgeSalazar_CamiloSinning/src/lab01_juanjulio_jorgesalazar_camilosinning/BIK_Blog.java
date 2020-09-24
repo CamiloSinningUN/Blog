@@ -1,9 +1,9 @@
 package lab01_juanjulio_jorgesalazar_camilosinning;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 //import javax.swing.ImageIcon;
 
@@ -15,6 +15,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     int PostHereForComment;
     int CommentHereIndexArray;
     User UserNow;
+    int posiciones[] = new int[10];
 
     //true si salio de principal, false si salio de user
     boolean sw;
@@ -135,48 +136,68 @@ public class BIK_Blog extends javax.swing.JFrame {
 
         Comment c = p.CommentPTR;
         String temp = "";
-        while (c != null) {           
+        while (c != null) {
             String name = c.name;
             String email = c.email;
             String comment = c.comment;
-            
+
             commentsEditorPane.setText(temp
-                    + "<b>name: </b>" + name + "<br>"                    
+                    + "<b>name: </b>" + name + "<br>"
                     + "<b>email: </b>" + email + "<br><br>"
-                    + comment );
-              
+                    + comment);
+
             temp = temp + "<b>name: </b>" + name + "<br>" + "<b>email: </b>" + email + "<br><br>" + comment + "<br><br><hr>";
             c = c.Link;
-            
+
         }
 
-         PostHereForComment = p.id;
-         commentsEditorPane.setCaretPosition(0);
+        PostHereForComment = p.id;
+        commentsEditorPane.setCaretPosition(0);
         //CommentHereIndexArray = 0;
         //backCommentsButton.setEnabled(false);
         //nextCommentsButton.setEnabled(true);
     }
 
-    
-    public void DrawUser(Graphics g){
-        
-        double radio, diametro;
-        //Arbol.paint(g);
-        
-        //Graphics2D circulo = (Graphics2D)g;
-        //circulo.setStroke(new BasicStroke(5.f));
-        //circulo.setPaint(Color.DARK_GRAY);
-        radio = 1050/10/2;
-        diametro = radio*2;
-        //g.setStroke(new BasicStroke(5.f));
+    public void DrawUser(Graphics g) {
+        double diametro;
+        int i = 1, x = 50, y = 400;
+        diametro = 1050 / 10 / 2;
         g.setColor(Color.black);
-        g.drawOval(280, 20, 100, 100);
-        System.out.println("JE");
-        g.setColor(Color.red);
-        g.drawLine(20, 20,  110,110);
-        //circulo.drawOval(30, 500, (int) diametro, (int) diametro);
+        g.drawOval(505, 180, (int) diametro, (int) diametro);
+        g.drawString("Bik Blog", 509, 210);
+        while (i <= 10) {
+            g.setColor(Color.black);
+            g.drawOval(x, y, (int) diametro, (int) diametro);
+            posiciones[i - 1] = x;
+            g.setColor(Color.red);
+            g.drawLine(531, 231, x + 25, y);
+            g.setColor(Color.gray);
+            g.drawString("User #" + i, x + 4, y + 30);
+            i++;
+            x = x + 100;
+        }
     }
 
+    public void DrawPost(Graphics g, int j) {
+        double diametro;
+        int i = 1, x = 50, y = 400;
+        
+        diametro = 1050 / 10 / 2;
+        g.setColor(Color.black);
+        g.drawOval(505, 180, (int) diametro, (int) diametro);
+        g.drawString("User #" + j, 509, 210);
+        while (i <= 10) {
+            g.setColor(Color.black);
+            g.drawOval(x, y, (int) diametro, (int) diametro);
+            g.setColor(Color.red);
+            g.drawLine(531, 231, x + 25, y);
+            g.setColor(Color.gray);
+            g.drawString("Post #" + i, x + 4, y + 30);
+            //System.out.println(p.x + "," + p.y);
+            i++;
+            x = x + 100;
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -214,9 +235,11 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         Arbol = new javax.swing.JFrame();
         tablero = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        Graficar = new javax.swing.JButton();
+        Graficar1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -437,36 +460,13 @@ public class BIK_Blog extends javax.swing.JFrame {
         Arbol.setSize(new java.awt.Dimension(1060, 580));
         Arbol.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout tableroLayout = new javax.swing.GroupLayout(tablero);
-        tablero.setLayout(tableroLayout);
-        tableroLayout.setHorizontalGroup(
-            tableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
-        );
-        tableroLayout.setVerticalGroup(
-            tableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
-        );
-
-        Arbol.getContentPane().add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 910, 390));
-
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Expand_Arrow_32px.png"))); // NOI18N
-        jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablero.setBackground(new java.awt.Color(255, 255, 255));
+        tablero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel24MouseClicked(evt);
+                tableroMouseClicked(evt);
             }
         });
-        Arbol.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, -1, -1));
-
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Multiply_32px.png"))); // NOI18N
-        jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
-            }
-        });
-        Arbol.getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, -1, -1));
+        tablero.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/image.png"))); // NOI18N
         jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -475,7 +475,70 @@ public class BIK_Blog extends javax.swing.JFrame {
                 jLabel23MouseClicked(evt);
             }
         });
-        Arbol.getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, -1, -1));
+        tablero.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, -1, -1));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Expand_Arrow_32px.png"))); // NOI18N
+        jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel24MouseClicked(evt);
+            }
+        });
+        tablero.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, -1, -1));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Multiply_32px.png"))); // NOI18N
+        jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+        });
+        tablero.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, -1, -1));
+
+        Graficar.setBackground(new java.awt.Color(255, 255, 255));
+        Graficar.setText("GRAFICAR ÁRBOL");
+        Graficar.setBorderPainted(false);
+        Graficar.setContentAreaFilled(false);
+        Graficar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Graficar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GraficarMouseClicked(evt);
+            }
+        });
+        Graficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraficarActionPerformed(evt);
+            }
+        });
+        Graficar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GraficarKeyPressed(evt);
+            }
+        });
+        tablero.add(Graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 50));
+
+        Graficar1.setBackground(new java.awt.Color(255, 255, 255));
+        Graficar1.setBorderPainted(false);
+        Graficar1.setContentAreaFilled(false);
+        Graficar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Graficar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Graficar1MouseClicked(evt);
+            }
+        });
+        Graficar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Graficar1ActionPerformed(evt);
+            }
+        });
+        Graficar1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Graficar1KeyPressed(evt);
+            }
+        });
+        tablero.add(Graficar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 180, 50));
+
+        Arbol.getContentPane().add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 580));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -497,6 +560,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         UserID.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         UserID.setForeground(new java.awt.Color(153, 153, 153));
         UserID.setText("Enter ID/Name");
+        UserID.setBorder(null);
         UserID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         UserID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -556,7 +620,9 @@ public class BIK_Blog extends javax.swing.JFrame {
         ErrorMessage.setEditable(false);
         ErrorMessage.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         ErrorMessage.setForeground(new java.awt.Color(255, 99, 71));
+        ErrorMessage.setBorder(null);
         ErrorMessage.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        ErrorMessage.setFocusable(false);
         ErrorMessage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ErrorMessageMouseClicked(evt);
@@ -872,27 +938,13 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void commentsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentsButtonMouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);     
+        this.setVisible(false);
         comments.setVisible(true);
         Post post = SearchPost(PrincipalHere);
         System.out.println(post.id);
         BeginComments(post);
         sw = true;
-        
-
     }//GEN-LAST:event_commentsButtonMouseClicked
-
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel22MouseClicked
-
-    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel23MouseClicked
-
-    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel24MouseClicked
 
     private void VistaArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VistaArbolActionPerformed
         // TODO add your handling code here:
@@ -910,13 +962,70 @@ public class BIK_Blog extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         Arbol.setVisible(true);
-        Graphics g = Arbol.getGraphics();
-        DrawUser(g);
     }//GEN-LAST:event_VistaArbolMouseClicked
 
     private void VistaArbolKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VistaArbolKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_VistaArbolKeyPressed
+
+    private void tableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableroMouseClicked
+        // TODO add your handling code here:
+        int x = 287, j = 1;
+        Point p = MouseInfo.getPointerInfo().getLocation();
+        System.out.println(p.x + "," + p.y);
+        while (j <= 10) {
+            if (p.x >= posiciones[j - 1] - 25 && p.x <= posiciones[j - 1] + 25) {
+                Graficar1.doClick();
+            }
+            j++;
+        }
+    }//GEN-LAST:event_tableroMouseClicked
+
+    private void Graficar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Graficar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Graficar1MouseClicked
+
+    private void Graficar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Graficar1ActionPerformed
+        // TODO add your handling code here:
+        
+        tablero.removeAll();
+        tablero.repaint();
+             
+        Graphics g = tablero.getGraphics();
+        DrawPost(g, 5);
+
+    }//GEN-LAST:event_Graficar1ActionPerformed
+
+    private void Graficar1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Graficar1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Graficar1KeyPressed
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel24MouseClicked
+
+    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void GraficarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GraficarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GraficarKeyPressed
+
+    private void GraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraficarActionPerformed
+        // TODO add your handling code here:
+        Graphics g = tablero.getGraphics();
+        Graficar.setVisible(false);
+        DrawUser(g);
+    }//GEN-LAST:event_GraficarActionPerformed
+
+    private void GraficarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GraficarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GraficarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -959,6 +1068,8 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JFrame Arbol;
     private javax.swing.JButton Buscar;
     private javax.swing.JTextField ErrorMessage;
+    private javax.swing.JButton Graficar;
+    private javax.swing.JButton Graficar1;
     private javax.swing.JTextField UserID;
     private javax.swing.JButton VistaArbol;
     private javax.swing.JButton backButton;
