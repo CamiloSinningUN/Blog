@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package lab01_juanjulio_jorgesalazar_camilosinning;
 
 import java.io.BufferedReader;
@@ -10,16 +6,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- *
- * @author camil
- */
+
 public class JsonMethods {
    
-    //Calcular maximo de cada cosa
-    //maximos numero post de un usuario
-    //maximo numero de comentarios en cada post
-    //cuantos usuarios hay (10)
+
+    //Convierte el Json en una arreglo de cadenas, separado por la informacion de cada usario
     public static String[] SplitUsers() {
 
         File f = new File("Users.json");
@@ -58,17 +49,12 @@ public class JsonMethods {
                     }
 
                     //comienza info de usuario en campo de vector
-                    //System.out.println("palabra es: "+palabra);
                     if (palabra.equals("\"id\"")) {
                         sw = true;
-
-                        //System.out.println("entre a id sw true");
                     }
 
                     //mete las lineas siguientes al vector
                     if (sw) {
-                        //System.out.println("linea es: "+linea);
-
                         users[j] = users[j] + linea;
                     } else {
                         j = j + 1;
@@ -77,7 +63,6 @@ public class JsonMethods {
 
                     if (palabra.equals("\"bs\"")) {
                         sw = false;
-                        //System.out.println("entre a bs sw false");
                     }
 
                 }
@@ -91,6 +76,7 @@ public class JsonMethods {
 
     }
 
+    //convierte un dato de texto en un objeto de tipo usuario
     public static User StringToUser(String myUser) {
         int id = 0;
         String username;
@@ -195,9 +181,6 @@ public class JsonMethods {
         
         bs = InfoBody("\"bs\"", myUser);  
         //System.out.println(bs);        
-        //
-
-        // falta cantidad de post
         
         //Company
         Company company = new Company(companyName,catchPhrase,bs);       
@@ -210,12 +193,12 @@ public class JsonMethods {
         return u;
     }
 
+    //Convierte el Json en una arreglo de cadenas, separado por la informacion de cada commentario
     public static String[] SplitComments() {
         File f = new File("Comments.json");
         try {
             BufferedReader br = new BufferedReader(new FileReader(f));
             String linea;
-            //el tamaño del vector debe ser hallado de otra forma
             int j = 0;
             boolean sw = false;
             String[] comments = new String[500];
@@ -260,15 +243,11 @@ public class JsonMethods {
 
                     }
 
-                    //comienza info de usuario en campo de vector
-                    //System.out.println("palabra es: "+palabra);
-                    // System.out.println("asi entra "+sw);
+                    //comienza info de usuario en campo de vector                    
                     if (palabra1.equals("\"postId\"")) {
                         sw = true;
-
-                        //System.out.println("entre a id sw true");
                     }
-                    //System.out.println("asi sale "+sw);
+
 
                     //mete las lineas siguientes al vector
                     if (sw) {
@@ -293,6 +272,7 @@ public class JsonMethods {
         }
     }
 
+    //metodo que extrae la informacion de una liena de json, si esta es una cadena de texto
     public static String InfoString(String word, String json) {
         String answer = "";
         boolean sw = true;
@@ -319,6 +299,7 @@ public class JsonMethods {
         return answer;
     }
 
+    //metodo que extrae la informacion de una liena de json, si esta es un entero
     public static int InfoInt(String word, String json) {
         int answer = 0;
         boolean sw = true;
@@ -342,7 +323,8 @@ public class JsonMethods {
         }
         return answer;
     }
-    
+  
+    //metodo que extrae la informacion de una liena de json, si esta es un caso especial que llame body 
     public static String InfoBody(String word, String json){
         String answer = "";
         boolean sw = true;
@@ -371,6 +353,7 @@ public class JsonMethods {
         return answer;
     }
 
+    //convierte un dato de texto en un objeto de tipo commentario
     public static Comment StringToComment(String myComment) {
         String comment;
         int postId;
@@ -398,6 +381,7 @@ public class JsonMethods {
         return c;
     }
 
+    //Convierte el Json en una arreglo de cadenas, separado por la informacion de cada post
     public static String[] SplitPosts() {
         File f = new File("Posts.json");
         try {
@@ -449,14 +433,11 @@ public class JsonMethods {
                     }
 
                     //comienza info de usuario en campo de vector
-                    //System.out.println("palabra es: "+palabra);
-                    // System.out.println("asi entra "+sw);
                     if (palabra1.equals("\"userId\"")) {
                         sw = true;
 
-                        //System.out.println("entre a id sw true");
                     }
-                    //System.out.println("asi sale "+sw);
+
 
                     //mete las lineas siguientes al vector
                     if (sw) {
@@ -480,7 +461,8 @@ public class JsonMethods {
             return null;
         }
     }
-    
+
+//convierte un dato de texto en un objeto de tipo post    
     public static Post StringToPost(String myPost) {
         int id;
         int userId;

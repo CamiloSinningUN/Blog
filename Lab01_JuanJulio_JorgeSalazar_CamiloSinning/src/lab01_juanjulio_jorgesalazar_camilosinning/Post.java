@@ -18,8 +18,6 @@ public class Post {
     String post;
     String title;
     Comment CommentPTR;
-
-    //Hermano de Post
     Post Link;
 
     public Post(int userId, String post, String title, int id) {
@@ -27,9 +25,9 @@ public class Post {
         this.post = post;
         this.title = title;
         this.id = id;
-        //myComments = new ArrayList<>();
     }
 
+    //inserta commentarios al post
     public void InsertComment(Comment comment) {
         Comment c = CommentPTR;
         if (CommentPTR == null) {
@@ -42,6 +40,7 @@ public class Post {
         }
     }
 
+    //te da cuantos comenatrios posee el post
     public int CommentsSize() {
         Comment c = CommentPTR;
         int i = 0;
@@ -53,24 +52,6 @@ public class Post {
 
     }
 
-    public Comment next(int indexArray) {
-        Comment c = CommentPTR;
-        int i = 0;
-        while (i < indexArray + 1) {
-            c = c.Link;
-            i=i+1;
-        }
-        return c;
-    }
-
-    public Comment back(int indexArray) {
-        Comment c = CommentPTR;
-        int i = 0;
-        while (i < indexArray - 1) {
-            c = c.Link;
-            i=i+1;
-        }
-        return c;
-    }
+    
 
 }

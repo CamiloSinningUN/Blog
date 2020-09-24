@@ -15,8 +15,6 @@ public class Comment {
     int id;
     String name;
     String email;
-    
-    //hermanos de Comment
     Comment Link;
     
 

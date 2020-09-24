@@ -24,9 +24,6 @@ public class User {
     String website;
     Company company;
     Post PostPTR;
-    //Lista de post
-
-    //Link a Hermanos de User
     User Link;
 
     public User(int id, String username, String name, String email, Address address, String phone, String website, Company company) {
@@ -38,9 +35,9 @@ public class User {
         this.phone = phone;
         this.website = website;
         this.company = company;
-        //myPosts = new ArrayList<>();
     }
 
+    //inserta post en el usuario
     public void InsertPost(Post post) {
         Post p = PostPTR;
         if (PostPTR == null) {
@@ -54,6 +51,7 @@ public class User {
         }
     }
 
+    //devuelve el numero de post que posee un usuario
     public int PostsSize() {
         int i = 0;
         Post p =  PostPTR;       
@@ -64,6 +62,7 @@ public class User {
         return i;
     }
 
+   //metodo que devuelve un entero del siguiente post
     public int next(int Here, JEditorPane principalEditorPane) {     
         Post p = PostPTR;
         while(p!=null){
@@ -80,6 +79,7 @@ public class User {
         return Here;
     }
 
+    //metodo que devuelve un entero del anterior post
     public int back(int Here, JEditorPane principalEditorPane) { 
         
         Post p = PostPTR;

@@ -18,6 +18,7 @@ public class Blog {
     String name;
     User UserPTR;
 
+    //inserta usuarios a la raiz
     public void InsertUser(User user) {
         User u = UserPTR;
         if (UserPTR == null) {
@@ -30,7 +31,8 @@ public class Blog {
             u.Link = user;
         }
     }
-
+    
+    //metodo que devuelve un entero del siguiente post
     public int next(int Here, JEditorPane principalEditorPane) {
 
         User u = UserPTR;
@@ -42,6 +44,7 @@ public class Blog {
         return Here;
     }
 
+    //metodo que devuelve un entero del anterior post
     public int back(int Here, JEditorPane principalEditorPane){       
         User u = UserPTR;
          while (u != null) {
@@ -51,6 +54,7 @@ public class Blog {
         return Here;
     }
 
+    //Busca usuario con determinada id
     public User SearchUser(int id) {
         User u = UserPTR;
         while ( (u != null )&& (u.id != id) ) {
@@ -59,6 +63,7 @@ public class Blog {
         return u;
     }
     
+    //busca usuario con determinado nombre
     public User SearchName(String name){
         User u = UserPTR;
         while( (u != null )&& !(u.name.toLowerCase().contains(name.toLowerCase())) ){
