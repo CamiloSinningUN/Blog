@@ -1017,15 +1017,15 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_commentsGoBackButtonMouseClicked
 
     private void errorTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_errorTextFieldMouseClicked
-        
+
     }//GEN-LAST:event_errorTextFieldMouseClicked
 
     private void errorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorTextFieldActionPerformed
-      
+
     }//GEN-LAST:event_errorTextFieldActionPerformed
 
     private void errorTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_errorTextFieldKeyReleased
-      
+
     }//GEN-LAST:event_errorTextFieldKeyReleased
 
     private void commentsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentsButtonMouseClicked
@@ -1038,15 +1038,15 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_commentsButtonMouseClicked
 
     private void graphicTreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphicTreeButtonActionPerformed
-        
+
     }//GEN-LAST:event_graphicTreeButtonActionPerformed
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
-        
+
     }//GEN-LAST:event_searchButtonMouseClicked
 
     private void searchButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchButtonKeyPressed
-        
+
     }//GEN-LAST:event_searchButtonKeyPressed
 
     private void graphicTreeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_graphicTreeButtonMouseClicked
@@ -1055,7 +1055,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_graphicTreeButtonMouseClicked
 
     private void graphicTreeButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_graphicTreeButtonKeyPressed
-       
+
     }//GEN-LAST:event_graphicTreeButtonKeyPressed
 
     private void tableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableroMouseClicked
@@ -1064,31 +1064,31 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_tableroMouseClicked
 
     private void Graficar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Graficar1MouseClicked
-        
+
     }//GEN-LAST:event_Graficar1MouseClicked
 
     private void Graficar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Graficar1ActionPerformed
-       
+
     }//GEN-LAST:event_Graficar1ActionPerformed
 
     private void Graficar1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Graficar1KeyPressed
-       
+
     }//GEN-LAST:event_Graficar1KeyPressed
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        
+
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-       
+
     }//GEN-LAST:event_jLabel24MouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-        
+
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void GraficarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GraficarKeyPressed
-        
+
     }//GEN-LAST:event_GraficarKeyPressed
 
     private void GraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraficarActionPerformed
@@ -1098,23 +1098,41 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_GraficarActionPerformed
 
     private void GraficarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GraficarMouseClicked
-      
+
     }//GEN-LAST:event_GraficarMouseClicked
 
     private void Buscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar2MouseClicked
-       
+
     }//GEN-LAST:event_Buscar2MouseClicked
 
     private void Buscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar2ActionPerformed
-        Graphics g = tablero.getGraphics();
-        g.clearRect(50, 50, 1000, 1000);
-        g.setColor(Color.white);
-        g.fillRect(50, 50, 1000, 1000);
-        DrawPost(g, Integer.parseInt(Display.getText()));
+
+        try {
+            if (!Display.getText().isEmpty()) {
+                if ((Integer.parseInt(Display.getText()) > 0) && (Integer.parseInt(Display.getText()) <= 10)) {
+                    Graphics g = tablero.getGraphics();
+                    g.clearRect(50, 50, 1000, 1000);
+                    g.setColor(Color.white);
+                    g.fillRect(50, 50, 1000, 1000);
+                    DrawPost(g, Integer.parseInt(Display.getText()));
+                } else {
+                    System.out.println("mucho texto");
+                    Display.setText("");
+                }
+
+            } else {
+                System.out.println("mucho texto");
+                Display.setText("");
+            }
+        } catch (Exception e) {
+            System.out.println("mucho texto");
+            Display.setText("");
+        }
+
     }//GEN-LAST:event_Buscar2ActionPerformed
 
     private void Buscar2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Buscar2KeyPressed
-        
+
     }//GEN-LAST:event_Buscar2KeyPressed
 
     private void Buscar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar3MouseClicked
