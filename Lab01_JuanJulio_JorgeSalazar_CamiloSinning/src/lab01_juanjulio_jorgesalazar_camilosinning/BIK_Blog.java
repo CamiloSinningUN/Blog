@@ -10,14 +10,12 @@ import java.awt.event.KeyEvent;
 public class BIK_Blog extends javax.swing.JFrame {
 
     Blog Raiz = new Blog();
+    
+    //Variables auxiliares 
     int PrincipalHere;
-    int UserHere;
-    int PostHereForComment;
-    int CommentHereIndexArray;
+    int UserHere;      
     User UserNow;
     int posiciones[] = new int[10];
-
-    //true si salio de principal, false si salio de user
     boolean sw;
 
     public BIK_Blog() {
@@ -149,13 +147,8 @@ public class BIK_Blog extends javax.swing.JFrame {
             temp = temp + "<b>name: </b>" + name + "<br>" + "<b>email: </b>" + email + "<br><br>" + comment + "<br><br><hr>";
             c = c.Link;
 
-        }
-
-        PostHereForComment = p.id;
-        commentsEditorPane.setCaretPosition(0);
-        //CommentHereIndexArray = 0;
-        //backCommentsButton.setEnabled(false);
-        //nextCommentsButton.setEnabled(true);
+        }       
+        commentsEditorPane.setCaretPosition(0);      
     }
 
     public void DrawUser(Graphics g) {
@@ -168,7 +161,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         while (i <= 10) {
             g.setColor(Color.black);
             g.drawOval(x, y, (int) diametro, (int) diametro);
-            posiciones[i - 1] = x + 250;
+            posiciones[i - 1] = x + 175;
             g.setColor(Color.red);
             g.drawLine(531, 231, x + 25, y);
             g.setColor(Color.gray);
