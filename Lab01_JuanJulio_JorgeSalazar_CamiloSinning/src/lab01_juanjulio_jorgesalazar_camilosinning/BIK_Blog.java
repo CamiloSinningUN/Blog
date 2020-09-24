@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-//import javax.swing.ImageIcon;
+import javax.swing.ImageIcon;
 
 public class BIK_Blog extends javax.swing.JFrame {
 
@@ -22,12 +22,14 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     public BIK_Blog() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         userInfo.setLocationRelativeTo(null);
         comments.setLocationRelativeTo(null);
         Arbol.setLocationRelativeTo(null);
-        /*setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage()); 
-        userInfo.setIconImage(new ImageIcon(getClass().getResource("/Images/0 (1) (1).png")).getImage());*/
+        setIconImage(new ImageIcon(getClass().getResource("/Images/blogger.png")).getImage()); 
+        userInfo.setIconImage(new ImageIcon(getClass().getResource("/Images/blogger.png")).getImage());
+        Arbol.setIconImage(new ImageIcon(getClass().getResource("/Images/blogger.png")).getImage());
+        
         //Inicio
         Begin();
 
