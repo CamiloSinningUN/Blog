@@ -168,7 +168,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         while (i <= 10) {
             g.setColor(Color.black);
             g.drawOval(x, y, (int) diametro, (int) diametro);
-            posiciones[i - 1] = x;
+            posiciones[i - 1] = x + 250;
             g.setColor(Color.red);
             g.drawLine(531, 231, x + 25, y);
             g.setColor(Color.gray);
@@ -181,7 +181,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     public void DrawPost(Graphics g, int j) {
         double diametro;
         int i = 1, x = 50, y = 400;
-        
+
         diametro = 1050 / 10 / 2;
         g.setColor(Color.black);
         g.drawOval(505, 180, (int) diametro, (int) diametro);
@@ -895,8 +895,6 @@ public class BIK_Blog extends javax.swing.JFrame {
         infoUserPostEditorPane.setText("<b>" + title + "</b><br>" + "<br>" + info);
         infoUserBackButton.setEnabled(false);
         infoUserNextButton.setEnabled(false);
-
-
     }//GEN-LAST:event_infoPostButtonMouseClicked
 
     private void commentsButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentsButton1MouseClicked
@@ -970,12 +968,16 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void tableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableroMouseClicked
         // TODO add your handling code here:
-        int x = 287, j = 1;
+        int j = 1;
         Point p = MouseInfo.getPointerInfo().getLocation();
         System.out.println(p.x + "," + p.y);
         while (j <= 10) {
             if (p.x >= posiciones[j - 1] - 25 && p.x <= posiciones[j - 1] + 25) {
-                Graficar1.doClick();
+                Graphics g = tablero.getGraphics();
+                g.clearRect(50, 50, 1000, 1000);
+                g.setColor(Color.white);
+                g.fillRect(50, 50, 1000, 1000);
+                DrawPost(g, j);
             }
             j++;
         }
@@ -987,19 +989,6 @@ public class BIK_Blog extends javax.swing.JFrame {
 
     private void Graficar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Graficar1ActionPerformed
         // TODO add your handling code here:
-        
-        //tablero.removeAll();       
-        //tablero.repaint();
-        
-        Graphics g = tablero.getGraphics();
-        g.clearRect(50, 50, 1000, 1000);
-        g.setColor(Color.white);
-        g.fillRect(50, 50, 1000, 1000);
-       
-        
-       
-        
-        DrawPost(g, 5);
 
     }//GEN-LAST:event_Graficar1ActionPerformed
 
@@ -1027,11 +1016,7 @@ public class BIK_Blog extends javax.swing.JFrame {
         // TODO add your handling code here:
         Graphics g = tablero.getGraphics();
         Graficar.setVisible(false);
-        
-        
         DrawUser(g);
-        
-        
     }//GEN-LAST:event_GraficarActionPerformed
 
     private void GraficarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GraficarMouseClicked
