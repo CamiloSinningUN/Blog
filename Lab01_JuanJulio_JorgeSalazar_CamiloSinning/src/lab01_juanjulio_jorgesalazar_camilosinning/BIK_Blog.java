@@ -178,7 +178,11 @@ public class BIK_Blog extends javax.swing.JFrame {
     public void DrawUser(Graphics g) {
         double diametro;
         int i = 1, x = 50, y = 400;
-
+        
+        if (user == 0){
+            Buscar3.setEnabled(false);
+            Buscar3.setVisible(false);
+        }
         diametro = 1050 / 10 / 2;
         g.setColor(Color.black);
         g.drawOval(505, 180, (int) diametro, (int) diametro);
@@ -292,10 +296,10 @@ public class BIK_Blog extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         Graficar = new javax.swing.JButton();
-        Graficar1 = new javax.swing.JButton();
         Display = new javax.swing.JTextField();
         Buscar2 = new javax.swing.JButton();
         Buscar3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
         userPhoto = new javax.swing.JLabel();
         searchLine = new javax.swing.JSeparator();
@@ -552,8 +556,10 @@ public class BIK_Blog extends javax.swing.JFrame {
         tablero.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, -1, -1));
 
         Graficar.setBackground(new java.awt.Color(255, 255, 255));
-        Graficar.setText("GRAFICAR ÁRBOL");
-        Graficar.setBorderPainted(false);
+        Graficar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        Graficar.setForeground(new java.awt.Color(53, 118, 153));
+        Graficar.setText("GRAFICAR BLOQUE UNICIAL DEL ÁRBOL");
+        Graficar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Graficar.setContentAreaFilled(false);
         Graficar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Graficar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -571,35 +577,24 @@ public class BIK_Blog extends javax.swing.JFrame {
                 GraficarKeyPressed(evt);
             }
         });
-        tablero.add(Graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 50));
+        tablero.add(Graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 270, 30));
 
-        Graficar1.setBackground(new java.awt.Color(255, 255, 255));
-        Graficar1.setBorderPainted(false);
-        Graficar1.setContentAreaFilled(false);
-        Graficar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Graficar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Display.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Display.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Graficar1MouseClicked(evt);
+                DisplayMouseClicked(evt);
             }
         });
-        Graficar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Graficar1ActionPerformed(evt);
-            }
-        });
-        Graficar1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Graficar1KeyPressed(evt);
-            }
-        });
-        tablero.add(Graficar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 180, 50));
-        tablero.add(Display, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 539, 170, 30));
+        tablero.add(Display, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 170, 30));
 
         Buscar2.setBackground(new java.awt.Color(255, 255, 255));
-        Buscar2.setText("User");
-        Buscar2.setBorderPainted(false);
+        Buscar2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        Buscar2.setForeground(new java.awt.Color(53, 118, 153));
+        Buscar2.setText("USER");
+        Buscar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Buscar2.setContentAreaFilled(false);
         Buscar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Buscar2.setEnabled(false);
         Buscar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Buscar2MouseClicked(evt);
@@ -615,13 +610,16 @@ public class BIK_Blog extends javax.swing.JFrame {
                 Buscar2KeyPressed(evt);
             }
         });
-        tablero.add(Buscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 180, 30));
+        tablero.add(Buscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, 160, 30));
 
         Buscar3.setBackground(new java.awt.Color(255, 255, 255));
-        Buscar3.setText("Post");
-        Buscar3.setBorderPainted(false);
+        Buscar3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        Buscar3.setForeground(new java.awt.Color(53, 118, 153));
+        Buscar3.setText("POST");
+        Buscar3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Buscar3.setContentAreaFilled(false);
         Buscar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Buscar3.setEnabled(false);
         Buscar3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Buscar3MouseClicked(evt);
@@ -637,7 +635,11 @@ public class BIK_Blog extends javax.swing.JFrame {
                 Buscar3KeyPressed(evt);
             }
         });
-        tablero.add(Buscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 180, 30));
+        tablero.add(Buscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 530, 170, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 48)); // NOI18N
+        jLabel1.setText("AQUÍ SERÁ GRAFICADO SU ÁRBOL");
+        tablero.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 620, 130));
 
         tree.getContentPane().add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 580));
 
@@ -1063,28 +1065,17 @@ public class BIK_Blog extends javax.swing.JFrame {
         //System.out.println(p.x + "," + p.y);
     }//GEN-LAST:event_tableroMouseClicked
 
-    private void Graficar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Graficar1MouseClicked
-
-    }//GEN-LAST:event_Graficar1MouseClicked
-
-    private void Graficar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Graficar1ActionPerformed
-
-    }//GEN-LAST:event_Graficar1ActionPerformed
-
-    private void Graficar1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Graficar1KeyPressed
-
-    }//GEN-LAST:event_Graficar1KeyPressed
-
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-
+        System.exit(0);
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-
+        tree.setState(tree.ICONIFIED);
     }//GEN-LAST:event_jLabel24MouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-
+        tree.setVisible(false);
+        setVisible(true);
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void GraficarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GraficarKeyPressed
@@ -1092,8 +1083,13 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_GraficarKeyPressed
 
     private void GraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraficarActionPerformed
+        user = 0;
+        Buscar3.setEnabled(false);
+        Buscar2.setEnabled(true);
         Graphics g = tablero.getGraphics();
-        Graficar.setVisible(false);
+        g.clearRect(50, 50, 1000, 425);
+        g.setColor(Color.white);
+        g.fillRect(50, 50, 1000, 425);
         DrawUser(g);
     }//GEN-LAST:event_GraficarActionPerformed
 
@@ -1110,10 +1106,12 @@ public class BIK_Blog extends javax.swing.JFrame {
         try {
             if (!Display.getText().isEmpty()) {
                 if ((Integer.parseInt(Display.getText()) > 0) && (Integer.parseInt(Display.getText()) <= 10)) {
+                    Buscar3.setEnabled(true);
+                    Buscar3.setVisible(true);
                     Graphics g = tablero.getGraphics();
-                    g.clearRect(50, 50, 1000, 1000);
+                    g.clearRect(50, 50, 1000, 425);
                     g.setColor(Color.white);
-                    g.fillRect(50, 50, 1000, 1000);
+                    g.fillRect(50, 50, 1000, 425);
                     DrawPost(g, Integer.parseInt(Display.getText()));
                 } else {
                     System.out.println("mucho texto");
@@ -1138,9 +1136,9 @@ public class BIK_Blog extends javax.swing.JFrame {
     private void Buscar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar3MouseClicked
         int hijos;
         Graphics g = tablero.getGraphics();
-        g.clearRect(50, 50, 1000, 1000);
+        g.clearRect(50, 50, 1000, 425);
         g.setColor(Color.white);
-        g.fillRect(50, 50, 1000, 1000);
+        g.fillRect(50, 50, 1000, 425);
         hijos = Raiz.SearchUser(2).PostPTR.CommentsSize();
         DrawComment(g, Integer.parseInt(Display.getText()), hijos);
     }//GEN-LAST:event_Buscar3MouseClicked
@@ -1152,6 +1150,11 @@ public class BIK_Blog extends javax.swing.JFrame {
     private void Buscar3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Buscar3KeyPressed
 
     }//GEN-LAST:event_Buscar3KeyPressed
+
+    private void DisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DisplayMouseClicked
+        // TODO add your handling code here:
+        Display.selectAll();
+    }//GEN-LAST:event_DisplayMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1195,7 +1198,6 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JButton Buscar3;
     private javax.swing.JTextField Display;
     private javax.swing.JButton Graficar;
-    private javax.swing.JButton Graficar1;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel bikBlogLogo;
     private javax.swing.JLabel closeLabel;
@@ -1212,6 +1214,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     private javax.swing.JButton graphicTreeButton;
     private javax.swing.JButton infoPostButton;
     private javax.swing.JEditorPane infoUserPostEditorPane;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
