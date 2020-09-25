@@ -16,7 +16,6 @@ public class BIK_Blog extends javax.swing.JFrame {
     int UserHere;
     User UserNow;
     int user;
-
     boolean sw;
 
     public BIK_Blog() {
@@ -553,6 +552,7 @@ public class BIK_Blog extends javax.swing.JFrame {
 
         Graficar.setBackground(new java.awt.Color(255, 255, 255));
         Graficar.setText("GRAFICAR ÁRBOL");
+        Graficar.setBorder(null);
         Graficar.setBorderPainted(false);
         Graficar.setContentAreaFilled(false);
         Graficar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -571,7 +571,7 @@ public class BIK_Blog extends javax.swing.JFrame {
                 GraficarKeyPressed(evt);
             }
         });
-        tablero.add(Graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 50));
+        tablero.add(Graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, 40));
 
         Graficar1.setBackground(new java.awt.Color(255, 255, 255));
         Graficar1.setBorderPainted(false);
@@ -1136,13 +1136,29 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_Buscar2KeyPressed
 
     private void Buscar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar3MouseClicked
-        int hijos;
-        Graphics g = tablero.getGraphics();
-        g.clearRect(50, 50, 1000, 1000);
-        g.setColor(Color.white);
-        g.fillRect(50, 50, 1000, 1000);
-        hijos = Raiz.SearchUser(2).PostPTR.CommentsSize();
-        DrawComment(g, Integer.parseInt(Display.getText()), hijos);
+        try {
+            if (!Display.getText().isEmpty()) {
+                if ((Integer.parseInt(Display.getText()) > 0) && (Integer.parseInt(Display.getText()) <= 10)) {
+                    int hijos;
+                    Graphics g = tablero.getGraphics();
+                    g.clearRect(50, 50, 1000, 1000);
+                    g.setColor(Color.white);
+                    g.fillRect(50, 50, 1000, 1000);
+                    hijos = Raiz.SearchUser(2).PostPTR.CommentsSize();
+                    DrawComment(g, Integer.parseInt(Display.getText()), hijos);
+                } else {
+                    System.out.println("mucho texto");
+                    Display.setText("");
+                }
+            } else {
+                System.out.println("mucho texto");
+            }
+        } catch (Exception e) {
+            System.out.println("mucho texto");
+            Display.setText("");
+        }
+
+
     }//GEN-LAST:event_Buscar3MouseClicked
 
     private void Buscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar3ActionPerformed
