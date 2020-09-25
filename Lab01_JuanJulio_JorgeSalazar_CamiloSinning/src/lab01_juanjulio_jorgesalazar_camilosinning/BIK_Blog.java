@@ -16,7 +16,6 @@ public class BIK_Blog extends javax.swing.JFrame {
     int UserHere;
     User UserNow;
     int user;
-
     boolean sw;
 
     public BIK_Blog() {
@@ -556,10 +555,12 @@ public class BIK_Blog extends javax.swing.JFrame {
         tablero.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, -1, -1));
 
         Graficar.setBackground(new java.awt.Color(255, 255, 255));
+
         Graficar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         Graficar.setForeground(new java.awt.Color(53, 118, 153));
         Graficar.setText("GRAFICAR BLOQUE UNICIAL DEL ÁRBOL");
         Graficar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         Graficar.setContentAreaFilled(false);
         Graficar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Graficar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -577,7 +578,9 @@ public class BIK_Blog extends javax.swing.JFrame {
                 GraficarKeyPressed(evt);
             }
         });
+
         tablero.add(Graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 270, 30));
+
 
         Display.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Display.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1134,13 +1137,31 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_Buscar2KeyPressed
 
     private void Buscar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar3MouseClicked
-        int hijos;
-        Graphics g = tablero.getGraphics();
-        g.clearRect(50, 50, 1000, 425);
-        g.setColor(Color.white);
-        g.fillRect(50, 50, 1000, 425);
-        hijos = Raiz.SearchUser(2).PostPTR.CommentsSize();
-        DrawComment(g, Integer.parseInt(Display.getText()), hijos);
+
+        try {
+            if (!Display.getText().isEmpty()) {
+                if ((Integer.parseInt(Display.getText()) > 0) && (Integer.parseInt(Display.getText()) <= 10)) {
+                    int hijos;
+                    Graphics g = tablero.getGraphics();
+                    g.clearRect(50, 50, 1000, 425);
+                    g.setColor(Color.white);
+                    g.fillRect(50, 50, 1000, 425);
+                    hijos = Raiz.SearchUser(2).PostPTR.CommentsSize();
+                    DrawComment(g, Integer.parseInt(Display.getText()), hijos);
+                } else {
+                    System.out.println("mucho texto");
+                    Display.setText("");
+                }
+            } else {
+                System.out.println("mucho texto");
+            }
+        } catch (Exception e) {
+            System.out.println("mucho texto");
+            Display.setText("");
+        }
+
+
+
     }//GEN-LAST:event_Buscar3MouseClicked
 
     private void Buscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar3ActionPerformed
