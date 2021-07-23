@@ -1,2 +1,10 @@
-# Lab01
-La empresa BIK Solutions tiene la necesidad de desarrollar un software para búsqueda y visualización de los campos de información de un Blog con el fin de recolectar datos de las preferencias de lecturas de los usuarios. Es importante la buena presentación de la interfaz de usuario ya que este factor influirá en la cantidad de tiempo que los usuarios usan este aplicativo. Para esto ha contratado a la compañía Ingeniería RRRR para que le dé solución a esta necesidad. La gerente y dueña de Ingeniería RRRR ha dejado esta tarea para que sea resuelta por todos sus empleados (Estudiantes de ED II _ 202030), confiando absolutamente en la capacidad y habilidad de cada uno de ellos.
+# Blog
+Software para búsqueda y visualización de los campos de información de un Blog con el fin de recolectar datos de las preferencias de lecturas de los usuarios. 
+
+### Requisitos
+- Procesador Intel Dual Core.
+- 500 Mb de RAM.
+- JDK 12
+
+### Menu principal
+
