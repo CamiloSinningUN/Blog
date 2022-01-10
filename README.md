@@ -30,7 +30,7 @@ En el IDE Apache NetBeans abrir el poryecto y ejecutarlo de forma regular.
 ## Autores ✒️
 
 * **Camilo Sinning** - *Diseño - Programación* - [CamiloSinningUN](https://github.com/CamiloSinningUN)
-* **Juan Julio** - *Diseño - Programación* -[djulioj](https://github.com/djulioj)
+* **Juan Julio** - *Diseño - Programación* - [djulioj](https://github.com/djulioj)
 
 Mirar la lista de todos los [contribuyentes](https://github.com/CamiloSinningUN/Blog/contributors) quíenes han participado en este proyecto. 
 
