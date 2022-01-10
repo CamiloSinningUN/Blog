@@ -880,7 +880,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void minimizeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeLabelMouseClicked
-        // TODO add your handling code here:
+        
         this.setState(BIK_Blog.ICONIFIED);
     }//GEN-LAST:event_minimizeLabelMouseClicked
 
@@ -889,7 +889,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_closeLabelMouseClicked
 
     private void commentsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        
     }
 
     private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
@@ -1173,7 +1173,7 @@ public class BIK_Blog extends javax.swing.JFrame {
     }//GEN-LAST:event_Buscar3KeyPressed
 
     private void DisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DisplayMouseClicked
-        // TODO add your handling code here:
+
         Display.selectAll();
     }//GEN-LAST:event_DisplayMouseClicked
 
