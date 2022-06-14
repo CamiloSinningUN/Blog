@@ -1,55 +1,55 @@
 # Blog
 
-Software para búsqueda y visualización de los campos de información de un Blog con el fin de recolectar datos de las preferencias de lecturas de los usuarios. 
+Software for searching and visualizing the information fields of a Blog in order to collect data on the user's reading preferences.
 
-## Comenzando 🚀
+## Starting 🚀
 
-Puede obtener una copia del proyecto simplemente descargandolo desde este repositorio.
+You can get a copy of the project simply by downloading it from this repository.
 
-Mira **Despliegue** para conocer como desplegar el proyecto.
+See **Deployment** to learn how to deploy the project.
 
-### Pre-requisitos 📋
+### Pre-requisites 📋
 
-El proyecto fue desarrollado en Apache NetBeans 11.3 en el lenguaje de programación java, por lo tanto es necesario tener el SDK correspondiente.
+The project was developed in Apache NetBeans 11.3 in the java programming language, therefore it is necessary to have the corresponding SDK.
 
-* Para obtener Apache Netbeans 11.3 visitar: https://netbeans.apache.org/download/nb126/nb126.html
-* Para obtener el JDK visitar: https://openjdk.java.net/projects/jdk8/
+* To get Apache Netbeans 11.3 visit: https://netbeans.apache.org/download/nb126/nb126.html
+* To get the JDK visit: https://openjdk.java.net/projects/jdk8/
 
-### Instalación 🔧
+### Installation 🔧
 
-Para la correcta instalación de los recursos necesarios seguir los pasos indicados en: https://netbeans.apache.org/download/nb126/nb126.html
+For the correct installation of the necessary resources, follow the steps indicated in: https://netbeans.apache.org/download/nb126/nb126.html
 
-## Despliegue 📦
+## Deployment 📦
 
-En el IDE Apache NetBeans abrir el poryecto y ejecutarlo de forma regular.
+In the Apache NetBeans IDE open the project and run it regularly.
 
-## Construido con 🛠️
+## Built with 🛠️
 
 * Apache Netbeans - IDE
 
-## Autores ✒️
+## Authors ✒️
 
-* **Camilo Sinning** - *Diseño - Programación* - [CamiloSinningUN](https://github.com/CamiloSinningUN)
-* **Juan Julio** - *Diseño - Programación* - [djulioj](https://github.com/djulioj)
-* **Jorge Salazar** - *Documentación*
+* **Camilo Sinning** - *Design - Programming* - [CamiloSinningUN](https://github.com/CamiloSinningUN)
+* **Juan Julio** - *Design - Programming* - [djulioj](https://github.com/djulioj)
+* **Jorge Salazar** - *Documentation*
 
-Mirar la lista de todos los [contribuyentes](https://github.com/CamiloSinningUN/Blog/contributors) quíenes han participado en este proyecto. 
+See the list of all the [contributors](https://github.com/CamiloSinningUN/Blog/contributors) who have participated in this project.
 
-## UI
+##UI
 
-### Menu principal
+### Main menu
 
 ![menu](https://user-images.githubusercontent.com/61607058/126845792-ce9e4160-3bd9-434d-9252-9f694fd6e909.jpg)
 
-### busqueda
-Como se observa en la imagen, usted debe introducir el nombre o id del usuario de interés. Posteriormente prosiga a darle al Enter, o darle clic a la lupa.
+### search
+As shown in the image, you must enter the name or id of the user of interest. Then continue to hit Enter, or click on the magnifying glass.
 
-![busqueda](https://user-images.githubusercontent.com/61607058/126845791-198a4b2a-faed-4cf7-b0b3-5c73e26c895d.jpg)
-### Comentarios
+![search](https://user-images.githubusercontent.com/61607058/126845791-198a4b2a-faed-4cf7-b0b3-5c73e26c895d.jpg)
+### Comments
 
-![comentarios](https://user-images.githubusercontent.com/61607058/126845788-675c7ba4-e48e-4dce-ae87-da6b9ded78e8.jpg)
+![comments](https://user-images.githubusercontent.com/61607058/126845788-675c7ba4-e48e-4dce-ae87-da6b9ded78e8.jpg)
 
-### Pagina de usuario
-Se puede ver toda la información relacionada acerca un usuario, incluyendo sus posts.
+### User page
+You can see all the related information about a user, including her posts.
 
-![usuario](https://user-images.githubusercontent.com/61607058/126845789-37066bea-2bb5-43bb-9554-269b54f7a025.jpg)
+![user](https://user-images.githubusercontent.com/61607058/126845789-37066bea-2bb5-43bb-9554-269b54f7a025.jpg)
